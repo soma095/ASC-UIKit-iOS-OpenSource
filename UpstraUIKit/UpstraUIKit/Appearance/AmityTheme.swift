@@ -9,7 +9,7 @@
 import UIKit
 
 /// Interface style
-enum AmityInterfaceStyle {
+public enum AmityInterfaceStyle {
     case light
     case dark
 }
@@ -48,6 +48,8 @@ public struct AmityTheme {
     // It will apply to incoming message components
     let messageBubbleInverse: UIColor
     
+    let background: UIColor
+    
     public init(primary: UIColor? = nil,
                 secondary: UIColor? = nil,
                 alert: UIColor? = nil,
@@ -55,7 +57,8 @@ public struct AmityTheme {
                 base: UIColor? = nil,
                 baseInverse: UIColor? = nil,
                 messageBubble: UIColor? = nil,
-                messageBubbleInverse: UIColor? = nil) {
+                messageBubbleInverse: UIColor? = nil,
+                background: UIColor? = nil) {
         self.primary = primary ?? UIColor(hex: "#1054DE")
         self.secondary = secondary ?? UIColor(hex: "#292B32")
         self.alert = alert ?? UIColor(hex: "#FA4D30")
@@ -64,6 +67,7 @@ public struct AmityTheme {
         self.baseInverse = baseInverse ?? .white
         self.messageBubble = messageBubble ?? UIColor(hex: "#1054DE")
         self.messageBubbleInverse = messageBubbleInverse ?? UIColor(hex: "#EBECEF")
+        self.background = background ?? .white
     }
     
 }

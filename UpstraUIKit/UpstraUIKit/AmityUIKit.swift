@@ -129,8 +129,9 @@ public final class AmityUIKitManager {
     
     // MARK: - Helper methods
     
-    public static func set(theme: AmityTheme) {
-        AmityThemeManager.set(theme: theme)
+    public static func set(theme: AmityTheme, for style: AmityInterfaceStyle) {
+        AmityThemeManager.set(theme: theme, for: style)
+        AmityThemeManager.updateInterfaceStyle(style)
     }
     
     public static func set(typography: AmityTypography) {

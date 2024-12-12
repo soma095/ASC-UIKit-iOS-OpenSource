@@ -91,7 +91,6 @@
 		68B30A7D2B70E38B006A4102 /* AmityStoryCommentSettingsScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B30A762B70E38B006A4102 /* AmityStoryCommentSettingsScreenViewModel.swift */; };
 		68B30A7E2B70E38B006A4102 /* AmityStoryCommentSettingsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B30A782B70E38B006A4102 /* AmityStoryCommentSettingsItem.swift */; };
 		68F0EE062BC6BBDF004B3AA4 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 68F0EE052BC6BBDF004B3AA4 /* PrivacyInfo.xcprivacy */; };
-		68F5D9FA2B481E4000A9FA0D /* AmityUIKit4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68F5D9F92B481E4000A9FA0D /* AmityUIKit4.framework */; };
 		720D599A2525BDB1009734EF /* DispatchGroupWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 720D59992525BDB1009734EF /* DispatchGroupWrapper.swift */; };
 		7211553E25505D180081CC23 /* AmityCategoryPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7211553C25505D180081CC23 /* AmityCategoryPickerViewController.swift */; };
 		7211553F25505D180081CC23 /* AmityCategoryPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7211553D25505D180081CC23 /* AmityCategoryPickerViewController.xib */; };
@@ -1341,7 +1340,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				682E02182CF0AE4D00FE1042 /* SharedFrameworks in Frameworks */,
-				68F5D9FA2B481E4000A9FA0D /* AmityUIKit4.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

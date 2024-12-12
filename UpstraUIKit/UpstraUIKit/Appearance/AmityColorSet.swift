@@ -36,7 +36,7 @@ struct AmityColorSet {
     }
     
     static var backgroundColor: UIColor {
-        return UIColor.white
+        return AmityThemeManager.currentTheme.background
     }
     
 }
