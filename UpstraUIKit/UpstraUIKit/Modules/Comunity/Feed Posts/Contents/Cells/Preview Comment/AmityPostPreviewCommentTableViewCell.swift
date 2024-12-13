@@ -49,7 +49,7 @@ public final class AmityPostPreviewCommentTableViewCell: UITableViewCell, Nibbab
         selectionStyle = .none
         backgroundColor = AmityColorSet.backgroundColor
         contentView.backgroundColor = AmityColorSet.backgroundColor
-        separatorView.backgroundColor = AmityColorSet.secondary.blend(.shade4)
+        separatorView.backgroundColor = AmityColorSet.backgroundColor
         commentView.backgroundColor = AmityColorSet.backgroundColor
     }
     
