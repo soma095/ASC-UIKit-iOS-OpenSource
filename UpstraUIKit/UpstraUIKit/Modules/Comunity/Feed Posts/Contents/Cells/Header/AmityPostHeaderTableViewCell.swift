@@ -38,7 +38,7 @@ public final class AmityPostHeaderTableViewCell: UITableViewCell, Nibbable, Amit
         self.post = post
         avatarView.setImage(withImageURL: post.postedUser?.avatarURL, placeholder: AmityIconSet.defaultAvatar)
         avatarView.actionHandler = { [weak self] in
-            self?.avatarTap()
+           // self?.avatarTap()
         }
 
         displayNameLabel.configure(displayName: post.displayName,

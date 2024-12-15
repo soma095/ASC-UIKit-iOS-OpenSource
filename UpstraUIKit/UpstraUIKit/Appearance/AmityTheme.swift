@@ -50,6 +50,8 @@ public struct AmityTheme {
     
     let background: UIColor
     
+    let commentBackgroundColor: UIColor
+    
     public init(primary: UIColor? = nil,
                 secondary: UIColor? = nil,
                 alert: UIColor? = nil,
@@ -58,7 +60,8 @@ public struct AmityTheme {
                 baseInverse: UIColor? = nil,
                 messageBubble: UIColor? = nil,
                 messageBubbleInverse: UIColor? = nil,
-                background: UIColor? = nil) {
+                background: UIColor? = nil,
+                commentBackgroundColor: UIColor? = nil) {
         self.primary = primary ?? UIColor(hex: "#1054DE")
         self.secondary = secondary ?? UIColor(hex: "#292B32")
         self.alert = alert ?? UIColor(hex: "#FA4D30")
@@ -68,6 +71,7 @@ public struct AmityTheme {
         self.messageBubble = messageBubble ?? UIColor(hex: "#1054DE")
         self.messageBubbleInverse = messageBubbleInverse ?? UIColor(hex: "#EBECEF")
         self.background = background ?? .white
+        self.commentBackgroundColor = commentBackgroundColor ?? UIColor(hex: "#EBECEF")
     }
     
 }

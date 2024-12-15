@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -70,10 +70,12 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="pollContentVIEW" destination="H2p-sc-9uM" id="vki-Xv-jsy"/>
                 <outlet property="statusPollLabel" destination="yPS-6Z-HEo" id="Ati-Mi-u2h"/>
                 <outlet property="submitVoteButton" destination="aca-8G-c5v" id="PPt-xD-93g"/>
                 <outlet property="tableView" destination="Vw0-ib-3ty" id="9sV-Wv-ekf"/>
                 <outlet property="titlePollLabel" destination="F7Y-MO-rqg" id="4IB-IJ-7QT"/>
+                <outlet property="voteContainerStackView" destination="vjJ-PP-ytU" id="QGM-vm-D5p"/>
                 <outlet property="voteCountLabel" destination="Alw-82-SAt" id="Cle-a3-Qqd"/>
             </connections>
             <point key="canvasLocation" x="95.652173913043484" y="217.96875"/>

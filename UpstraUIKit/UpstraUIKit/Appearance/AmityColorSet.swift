@@ -39,4 +39,8 @@ struct AmityColorSet {
         return AmityThemeManager.currentTheme.background
     }
     
+    static var commentBackgroundColor: UIColor {
+        return AmityThemeManager.currentTheme.commentBackgroundColor
+    }
+    
 }

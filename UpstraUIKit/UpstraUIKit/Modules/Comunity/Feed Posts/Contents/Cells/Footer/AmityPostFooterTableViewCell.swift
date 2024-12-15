@@ -13,7 +13,9 @@ public final class AmityPostFooterTableViewCell: UITableViewCell, Nibbable, Amit
     
     public weak var delegate: AmityPostFooterDelegate?
 
+    @IBOutlet weak var bottomSeparator: UIView!
     // MARK: - IBOutlet Properties
+    @IBOutlet weak var topSeparator: UIView!
     @IBOutlet private var topContainerView: UIView!
     @IBOutlet private var likeLabel: UILabel!
     @IBOutlet private var commentLabel: UILabel!
@@ -37,7 +39,10 @@ public final class AmityPostFooterTableViewCell: UITableViewCell, Nibbable, Amit
         setupWarningLabel()
         setupLikeButton()
         setupCommentButton()
-        setupShareButton()
+        //setupShareButton()
+        shareButton.isHidden = true
+        topSeparator.backgroundColor = AmityColorSet.commentBackgroundColor
+        bottomSeparator.backgroundColor = AmityColorSet.commentBackgroundColor
     }
     
     public func display(post: AmityPostModel) {
@@ -59,8 +64,8 @@ public final class AmityPostFooterTableViewCell: UITableViewCell, Nibbable, Amit
         warningLabel.isHidden = post.isCommentable
         topContainerView.isHidden = isReactionExisted
         
-        shareButton.isHidden = !AmityPostSharePermission.canSharePost(post: post)
-        shareLabel.isHidden = post.sharedCount == 0
+        shareButton.isHidden = true
+        shareLabel.isHidden = true
         let sharePrefix = post.sharedCount > 1 ? AmityLocalizedStringSet.Unit.sharesPlural.localizedString :
             AmityLocalizedStringSet.Unit.sharesSingular.localizedString
         shareLabel.text = String.localizedStringWithFormat(sharePrefix, post.sharedCount)

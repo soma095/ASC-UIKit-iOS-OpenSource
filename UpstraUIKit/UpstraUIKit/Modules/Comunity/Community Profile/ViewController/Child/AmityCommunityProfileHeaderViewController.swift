@@ -17,7 +17,15 @@ import Combine
 
 final class AmityCommunityProfileHeaderViewController: UIViewController {
     
+    @IBOutlet var profileHeaderContainerView: UIView!
+    @IBOutlet weak var buttonContainerView: UIView!
+    @IBOutlet weak var descriptionBackgroundView: UIView!
+    @IBOutlet weak var descriptionContainerView: UIView!
+    @IBOutlet weak var memberView: UIView!
+    @IBOutlet weak var postView: UIView!
     // MARK: - IBOutlet Properties
+    @IBOutlet weak var infoContainerView: UIView!
+    @IBOutlet weak var headerStackView: UIStackView!
     @IBOutlet private var avatarView: AmityImageView!
     @IBOutlet private var displayNameLabel: UILabel!
     @IBOutlet private var privateBadgeImageView: UIImageView!
@@ -50,6 +58,13 @@ final class AmityCommunityProfileHeaderViewController: UIViewController {
     // MARK: - View lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        infoContainerView.backgroundColor = AmityColorSet.backgroundColor
+        postView.backgroundColor = AmityColorSet.backgroundColor
+        descriptionContainerView.backgroundColor = AmityColorSet.backgroundColor
+        memberView.backgroundColor = AmityColorSet.backgroundColor
+        buttonContainerView.backgroundColor = AmityColorSet.backgroundColor
+        descriptionContainerView.backgroundColor = AmityColorSet.backgroundColor
+        profileHeaderContainerView.backgroundColor = AmityColorSet.backgroundColor
         setupDisplayName()
         setupBadgeView()
         setupSubTitleLabel()
@@ -152,7 +167,7 @@ final class AmityCommunityProfileHeaderViewController: UIViewController {
     private func setupPendingPosts() {
         pendingPostsContainerView.isHidden = true
         pendingPostsContainerView.layer.cornerRadius = 4
-        pendingPostsContainerView.backgroundColor = AmityColorSet.base.blend(.shade4)
+        pendingPostsContainerView.backgroundColor = AmityColorSet.backgroundColor
         
         pendingPostsStatusView.backgroundColor = AmityColorSet.primary
         pendingPostsStatusView.layer.cornerRadius = pendingPostsStatusView.frame.height / 2

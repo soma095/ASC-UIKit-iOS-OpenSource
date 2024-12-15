@@ -19,6 +19,7 @@ public final class AmityFeedViewController: AmityViewController, AmityRefreshabl
     var pageIndex: Int = 0
     
     // MARK: - IBOutlet Properties
+    @IBOutlet var feedViewContainer: UIView!
     @IBOutlet private var tableView: AmityPostTableView!
     private var expandedIds: Set<String> = []
     
@@ -66,7 +67,9 @@ public final class AmityFeedViewController: AmityViewController, AmityRefreshabl
         super.viewDidLoad()
         setupView()
         setupProtocolHandler()
-        setupScreenViewModel()   
+        setupScreenViewModel()
+        feedViewContainer.backgroundColor = AmityColorSet.backgroundColor
+        tableView.backgroundColor = AmityColorSet.backgroundColor
     }
     
     public override func viewWillAppear(_ animated: Bool) {
@@ -137,7 +140,7 @@ public final class AmityFeedViewController: AmityViewController, AmityRefreshabl
     }
     
     private func setupTableView() {
-        tableView.backgroundColor = AmityColorSet.secondary.blend(.shade4)
+        //tableView.backgroundColor = AmityColorSet.secondary.blend(.shade4)
         tableView.tableFooterView = UIView()
         tableView.separatorStyle = .none
         tableView.showsVerticalScrollIndicator = false

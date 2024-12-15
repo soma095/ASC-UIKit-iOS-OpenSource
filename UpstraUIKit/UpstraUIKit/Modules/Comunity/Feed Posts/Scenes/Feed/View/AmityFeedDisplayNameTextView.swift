@@ -29,8 +29,8 @@ class AmityFeedDisplayNameLabel: UILabel {
         isUserInteractionEnabled = true
         numberOfLines = 3
         
-        let tap = UITapGestureRecognizer(target: self, action: #selector(tapFunction(sender:)))
-        addGestureRecognizer(tap)
+//        let tap = UITapGestureRecognizer(target: self, action: #selector(tapFunction(sender:)))
+//        addGestureRecognizer(tap)
     }
     
     func configure(displayName: String, communityName: String?, isOfficial: Bool, shouldShowCommunityName: Bool, shouldShowBannedSymbol: Bool) {

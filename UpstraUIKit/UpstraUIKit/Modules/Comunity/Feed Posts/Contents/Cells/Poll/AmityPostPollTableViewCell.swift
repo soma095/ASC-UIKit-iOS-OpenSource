@@ -16,6 +16,7 @@ final public class AmityPostPollTableViewCell: UITableViewCell, Nibbable, AmityP
         static let maxRowCountInNormalFeed = 3
     }
     
+    @IBOutlet weak var pollContentVIEW: UIView!
     // MARK: - IBOutlet Properties
     @IBOutlet private var titlePollLabel: AmityExpandableLabel!
     @IBOutlet private var statusPollLabel: UILabel!
@@ -23,6 +24,7 @@ final public class AmityPostPollTableViewCell: UITableViewCell, Nibbable, AmityP
     @IBOutlet private var tableView: UITableView!
     @IBOutlet private var submitVoteButton: UIButton!
     
+    @IBOutlet weak var voteContainerStackView: UIStackView!
     // MARK: - Properties
     public weak var delegate: AmityPostDelegate?
     public var post: AmityPostModel?
@@ -38,6 +40,8 @@ final public class AmityPostPollTableViewCell: UITableViewCell, Nibbable, AmityP
         setupVoteCountLabel()
         setupTableView()
         setupSubmitVoteButton()
+        pollContentVIEW.backgroundColor = AmityColorSet.backgroundColor
+        voteContainerStackView.backgroundColor = AmityColorSet.backgroundColor
     }
     
     public override func prepareForReuse() {
@@ -119,6 +123,7 @@ final public class AmityPostPollTableViewCell: UITableViewCell, Nibbable, AmityP
         tableView.tableFooterView = UIView()
         tableView.showsVerticalScrollIndicator = false
         tableView.showsHorizontalScrollIndicator = false
+        tableView.backgroundColor = AmityColorSet.backgroundColor
     }
     
     private func setupSubmitVoteButton() {
