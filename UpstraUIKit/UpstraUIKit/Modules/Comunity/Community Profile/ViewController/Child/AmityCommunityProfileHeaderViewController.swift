@@ -358,7 +358,7 @@ private extension AmityCommunityProfileHeaderViewController {
     }
     
     @IBAction func memberButtonTapped(_ sender: UIButton) {
-        screenViewModel.action.route(.member)
+       // screenViewModel.action.route(.member)
     }
     
     @IBAction func pendingPostsTap() {

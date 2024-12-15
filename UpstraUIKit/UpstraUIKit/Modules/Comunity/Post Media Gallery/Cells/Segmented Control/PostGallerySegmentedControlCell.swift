@@ -71,7 +71,7 @@ class PostGallerySegmentedControlCell: UICollectionViewCell, Nibbable {
         }
         button.backgroundColor = isHighlighted
             ? AmityThemeManager.currentTheme.primary
-            : AmityThemeManager.currentTheme.secondary.blend(.shade4)
+        : AmityThemeManager.currentTheme.commentBackgroundColor
     }
     
     func setSelectedSection(_ section: Section?, animated: Bool) {
