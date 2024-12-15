@@ -50,6 +50,7 @@ class AmityGalleryCollectionView: UICollectionView {
         register(UINib(nibName: AmityGalleryCollectionViewCell.identifier, bundle: AmityUIKitManager.bundle), forCellWithReuseIdentifier: AmityGalleryCollectionViewCell.identifier)
         dataSource = self
         delegate = self
+        backgroundColor = AmityColorSet.backgroundColor
     }
     
     private func setupLayout() {

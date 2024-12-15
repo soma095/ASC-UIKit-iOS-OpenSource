@@ -11,6 +11,7 @@ import AmitySDK
 
 public class AmityPostGalleryViewController: AmityViewController {
     
+    @IBOutlet var contentView: UIView!
     public var pageTitle: String = "Gallery"
     
     private var targetType = AmityPostTargetType.user
@@ -34,6 +35,8 @@ public class AmityPostGalleryViewController: AmityViewController {
         screenViewModel.delegate = self
         // Start with .image section
         switchTo(.image)
+        contentView.backgroundColor = AmityColorSet.backgroundColor
+        collectionView.backgroundColor = AmityColorSet.backgroundColor
     }
     
     public override func viewDidLayoutSubviews() {

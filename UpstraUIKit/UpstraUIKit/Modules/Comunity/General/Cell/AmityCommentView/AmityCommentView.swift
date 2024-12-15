@@ -58,11 +58,15 @@ class AmityCommentView: AmityView {
     }
     
     private func setupView() {
+      //  reactionDetailLabel.backgroundColor = AmityColorSet.backgroundColor
+      //  reactionDetailButton.backgroundColor = AmityColorSet.backgroundColor
+        reactionDetailContainerView.backgroundColor = AmityColorSet.backgroundColor
+       // reactionDetailLikeIcon.backgroundColor = AmityColorSet.backgroundColor
         avatarView.placeholder = AmityIconSet.defaultAvatar
-        avatarView.actionHandler = { [weak self] in
-            guard let strongSelf = self else { return }
-            strongSelf.delegate?.commentView(strongSelf, didTapAction: .avatar)
-        }
+//        avatarView.actionHandler = { [weak self] in
+//            guard let strongSelf = self else { return }
+//            strongSelf.delegate?.commentView(strongSelf, didTapAction: .avatar)
+//        }
         titleLabel.textColor = AmityColorSet.base
         titleLabel.font = AmityFontSet.bodyBold
         timeLabel.textColor = AmityColorSet.base.blend(.shade1)
@@ -201,7 +205,7 @@ class AmityCommentView: AmityView {
     }
     
     @IBAction func displaynameTap(_ sender: Any) {
-        delegate?.commentView(self, didTapAction: .avatar)
+        //delegate?.commentView(self, didTapAction: .avatar)
     }
     
     @objc private func replyButtonTap() {

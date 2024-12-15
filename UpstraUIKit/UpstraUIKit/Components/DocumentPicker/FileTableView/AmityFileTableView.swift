@@ -64,6 +64,7 @@ class AmityFileTableView: UITableView {
         separatorStyle = .none
         dataSource = self
         delegate = self
+        backgroundColor = AmityColorSet.backgroundColor
     }
     
     func configure(files: [AmityFile]) {

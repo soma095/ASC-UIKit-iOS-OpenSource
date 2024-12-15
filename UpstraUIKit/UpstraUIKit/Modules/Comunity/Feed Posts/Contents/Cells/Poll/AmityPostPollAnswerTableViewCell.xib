@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -119,6 +119,7 @@ Label 4</string>
             <connections>
                 <outlet property="containerView" destination="niR-tI-4uZ" id="Fe6-sD-Eiy"/>
                 <outlet property="iconImageView" destination="e41-YO-6KR" id="UOe-Tq-vXz"/>
+                <outlet property="postPollContentView" destination="H2p-sc-9uM" id="2Q7-zw-D0I"/>
                 <outlet property="resultTitleLabel" destination="s2B-V8-vre" id="Hyt-ge-TrB"/>
                 <outlet property="statusView" destination="Z8p-jH-ido" id="4dR-io-7pZ"/>
                 <outlet property="titleLabel" destination="i3V-xw-Dtq" id="MQw-55-EST"/>

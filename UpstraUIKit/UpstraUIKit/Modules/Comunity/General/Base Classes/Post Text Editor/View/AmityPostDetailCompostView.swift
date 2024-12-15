@@ -113,6 +113,7 @@ class AmityPostDetailCompostView: UIView {
     }
     
     private func commonInit() {
+        stackView.backgroundColor = AmityColorSet.backgroundColor
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
         stackView.alignment = .fill
@@ -153,6 +154,7 @@ class AmityPostDetailCompostView: UIView {
         textView.placeholder = AmityLocalizedStringSet.PostDetail.textPlaceholder.localizedString
         textView.customTextViewDelegate = self
         textView.font = AmityFontSet.body
+        textView.backgroundColor = AmityColorSet.backgroundColor
         postButton.translatesAutoresizingMaskIntoConstraints = false
         postButton.setTitle(AmityLocalizedStringSet.General.post.localizedString, for: .normal)
         postButton.setTitleColor(AmityColorSet.primary, for: .normal)

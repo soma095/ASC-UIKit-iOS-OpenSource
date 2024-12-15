@@ -18,6 +18,7 @@ public final class AmityPostGalleryTableViewCell: UITableViewCell, Nibbable, Ami
     
     // MARK: - IBOutlet Properties
     @IBOutlet private var galleryCollectionView: AmityGalleryCollectionView!
+    @IBOutlet weak var galleryContentView: UIView!
     @IBOutlet private var contentLabel: AmityExpandableLabel!
     
     // MARK: - Properties
@@ -28,6 +29,7 @@ public final class AmityPostGalleryTableViewCell: UITableViewCell, Nibbable, Ami
     
     public override func awakeFromNib() {
         super.awakeFromNib()
+        galleryContentView.backgroundColor = AmityColorSet.backgroundColor
         setupView()
     }
     

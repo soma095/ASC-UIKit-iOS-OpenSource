@@ -10,6 +10,7 @@ import UIKit
 
 final public class AmityPostPollAnswerTableViewCell: UITableViewCell, Nibbable {
 
+    @IBOutlet weak var postPollContentView: UIView!
     @IBOutlet private var containerView: UIView!
     @IBOutlet private var votingStackView: UIStackView!
     @IBOutlet private var votedStackView: UIStackView!
@@ -24,6 +25,9 @@ final public class AmityPostPollAnswerTableViewCell: UITableViewCell, Nibbable {
     public override func awakeFromNib() {
         super.awakeFromNib()
         selectionStyle = .none
+        postPollContentView.backgroundColor = AmityColorSet.backgroundColor
+        containerView.backgroundColor = AmityColorSet.backgroundColor
+        votingStackView.backgroundColor = AmityColorSet.backgroundColor
         setupTitleLabel()
         setupStatusView()
         setupContainer()
@@ -59,7 +63,7 @@ final public class AmityPostPollAnswerTableViewCell: UITableViewCell, Nibbable {
             
             let voteProgress = poll.voteCount > 0 ? Double(answer.voteCount) / Double(poll.voteCount) : 0
             
-            let progressTintColor = answer.isVotedByUser ? AmityColorSet.primary : AmityColorSet.base.blend(.shade1)
+            let progressTintColor = answer.isVotedByUser ? AmityColorSet.primary : AmityColorSet.commentBackgroundColor
             let containerViewBorderColor = answer.isVotedByUser ? AmityColorSet.primary : AmityColorSet.base.blend(.shade4)
             
             voteProgressView.progress = Float(voteProgress)

@@ -170,7 +170,8 @@ extension AmityCommunityProfilePageViewController: AmityCommunityProfileScreenVi
         guard let community = viewModel.community else { return }
         switch route {
         case .post:
-            AmityEventHandler.shared.createPostBeingPrepared(from: self, postTarget: .community(object: community.object))
+            AmityEventHandler.shared.postTargetDidSelect(from: self, postTarget: .community(object: community.object), postContentType: .post)
+           // AmityEventHandler.shared.createPostBeingPrepared(from: self, postTarget: .community(object: community.object))
         case .member:
             let vc = AmityCommunityMemberSettingsViewController.make(community: community.object)
             navigationController?.pushViewController(vc, animated: true)

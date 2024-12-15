@@ -20,6 +20,7 @@ protocol AmityCommentTableViewCellDelegate: AnyObject {
 
 class AmityCommentTableViewCell: UITableViewCell, Nibbable {
 
+    @IBOutlet weak var commentContentView: UIView!
     @IBOutlet private var commentView: AmityCommentView!
     
     weak var actionDelegate: AmityCommentTableViewCellDelegate?
@@ -41,6 +42,7 @@ class AmityCommentTableViewCell: UITableViewCell, Nibbable {
     override func awakeFromNib() {
         super.awakeFromNib()
         selectionStyle = .none
+        commentContentView.backgroundColor = AmityColorSet.backgroundColor
     }
     
     override func prepareForReuse() {
