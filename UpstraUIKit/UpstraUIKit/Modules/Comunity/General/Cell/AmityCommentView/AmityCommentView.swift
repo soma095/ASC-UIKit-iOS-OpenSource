@@ -114,7 +114,7 @@ class AmityCommentView: AmityView {
         viewReplyButton.setTitleColor(AmityColorSet.base.blend(.shade1), for: .normal)
         viewReplyButton.setTintColor(AmityColorSet.base.blend(.shade1), for: .normal)
         viewReplyButton.setImage(AmityIconSet.iconReplyInverse, for: .normal)
-        viewReplyButton.backgroundColor = AmityColorSet.secondary.blend(.shade4)
+        viewReplyButton.backgroundColor = AmityColorSet.backgroundColor
         viewReplyButton.clipsToBounds = true
         viewReplyButton.layer.cornerRadius = 4
         viewReplyButton.setInsets(forContentPadding: UIEdgeInsets(top: 6, left: 12, bottom: 6, right: 16), imageTitlePadding: 8)
