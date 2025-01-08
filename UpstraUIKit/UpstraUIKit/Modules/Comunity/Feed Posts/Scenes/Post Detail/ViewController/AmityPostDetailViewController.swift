@@ -72,6 +72,7 @@ open class AmityPostDetailViewController: AmityViewController {
         setupProtocolHandler()
         setupScreenViewModel()
         setupMentionTableView()
+        navigationController?.navigationBar.isHidden = false
     }
     
     public override func viewWillAppear(_ animated: Bool) {
@@ -115,7 +116,7 @@ open class AmityPostDetailViewController: AmityViewController {
     
     private func setupNavigationBar() {
         optionButton = UIBarButtonItem(image: AmityIconSet.iconOption, style: .plain, target: self, action: #selector(optionTap))
-        optionButton.tintColor = AmityColorSet.base
+        optionButton.tintColor = .green
         navigationItem.rightBarButtonItem = optionButton
     }
     

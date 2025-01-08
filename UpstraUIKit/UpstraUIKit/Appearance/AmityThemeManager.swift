@@ -15,7 +15,6 @@ class AmityThemeManager {
     private var interfaceStyle: AmityInterfaceStyle = .light {
         didSet {
             // Log for debugging
-            print("Interface style changed to: \(interfaceStyle)")
         }
     }
     
@@ -26,12 +25,10 @@ class AmityThemeManager {
     private static let defaultManager = AmityThemeManager()
     
     static var currentTheme: AmityTheme {
-        print("Returning current theme: \(defaultManager.currentTheme)")
         return defaultManager.currentTheme
     }
     
     static func set(theme: AmityTheme, for interfaceStyle: AmityInterfaceStyle = .light) {
-        print("Setting theme for \(interfaceStyle)")
         if interfaceStyle == .dark {
             defaultManager.darkTheme = theme
         } else {
@@ -39,12 +36,10 @@ class AmityThemeManager {
         }
         
         // Log to confirm the theme is updated
-        print("Theme set successfully for \(interfaceStyle)")
     }
     
     /// Update the interface style
     static func updateInterfaceStyle(_ style: AmityInterfaceStyle) {
-        print("Updating interface style to: \(style)")
         defaultManager.interfaceStyle = style
     }
 }

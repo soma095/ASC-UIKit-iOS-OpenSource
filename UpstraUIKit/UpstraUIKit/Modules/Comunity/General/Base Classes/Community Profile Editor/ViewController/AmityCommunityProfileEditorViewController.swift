@@ -39,12 +39,15 @@ public class AmityCommunityProfileEditorViewController: AmityViewController {
     @IBOutlet private weak var overlayView: UIView!
     @IBOutlet private weak var uploadPhotoButton: UIButton!
     
+    @IBOutlet weak var mainStackView: UIStackView!
     // MARK: - Community Name
+    @IBOutlet weak var communityNameView: UIView!
     @IBOutlet private var communityNameTitleLabel: UILabel!
     @IBOutlet private var communityNameCountLabel: UILabel!
     @IBOutlet private var communityNameTextfield: AmityTextField!
     @IBOutlet private var errorNameLabel: UILabel!
     
+    @IBOutlet weak var communityAboutView: UIView!
     // MARK: - Community About
     @IBOutlet private var communityAboutTitleLabel: UILabel!
     @IBOutlet private var communityAboutTextView: AmityTextView!
@@ -56,6 +59,8 @@ public class AmityCommunityProfileEditorViewController: AmityViewController {
     @IBOutlet private var communityCategoryLabel: UILabel!
     @IBOutlet private var commnuityCategoryArrowImageView: UIImageView!
     
+    @IBOutlet weak var communityTypeView: UIView!
+    @IBOutlet weak var communityCategoryView: UIView!
     // MARK: - Community Admin Rule
     @IBOutlet private var communityAdminRuleTitleLabel: UILabel!
     @IBOutlet private var communityAdminRuleDescLabel: UILabel!
@@ -116,6 +121,12 @@ public class AmityCommunityProfileEditorViewController: AmityViewController {
     }
 
     private func setupView() {
+        mainStackView.backgroundColor = AmityColorSet.backgroundColor
+        scrollView.backgroundColor = AmityColorSet.backgroundColor
+        communityNameView.backgroundColor = AmityColorSet.backgroundColor
+        communityAboutView.backgroundColor = AmityColorSet.backgroundColor
+        communityCategoryView.backgroundColor = AmityColorSet.backgroundColor
+        communityTypeView.backgroundColor = AmityColorSet.backgroundColor
         setupGeneral()
         setupCommunityDisplay()
         setupCommunityName()

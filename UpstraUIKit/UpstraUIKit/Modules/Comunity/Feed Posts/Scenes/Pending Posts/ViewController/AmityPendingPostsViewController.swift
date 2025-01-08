@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class AmityPendingPostsViewController: AmityViewController {
+public final class AmityPendingPostsViewController: AmityViewController {
 
     // MARK: - IBOutlet Properties
     @IBOutlet private var tableView: AmityPostTableView!
@@ -23,7 +23,11 @@ public class AmityPendingPostsViewController: AmityViewController {
         super.viewDidLoad()
         setupView()
         setupTableView()
-        
+        setupViewModel()
+    }
+    
+    public override func didTapLeftBarButton() {
+        navigationController?.popViewController(animated: true)
     }
     
     public static func make(communityId: String) -> AmityPendingPostsViewController {
@@ -35,7 +39,7 @@ public class AmityPendingPostsViewController: AmityViewController {
     
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setupViewModel()
+        navigationController?.navigationBar.isHidden = false
     }
     
     // MARK: - Setup ViewModel
@@ -50,7 +54,7 @@ public class AmityPendingPostsViewController: AmityViewController {
     }
     
     private func setupTableView()  {
-        tableView.backgroundColor = AmityColorSet.secondary.blend(.shade4)
+        tableView.backgroundColor = AmityColorSet.backgroundColor
         tableView.tableFooterView = UIView()
         tableView.separatorStyle = .none
         tableView.showsVerticalScrollIndicator = false
@@ -136,6 +140,7 @@ extension AmityPendingPostsViewController: AmityPendingPostsScreenViewModelDeleg
                                      actions: [.ok(style: .default, handler: nil)],
                                      from: self, completion: nil)
     }
+    
 }
 
 extension AmityPendingPostsViewController: AmityPostHeaderDelegate {

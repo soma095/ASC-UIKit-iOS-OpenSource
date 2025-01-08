@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -21,17 +21,20 @@
                 <outlet property="communityAboutCountLabel" destination="72Z-ln-Vla" id="ZTO-nC-69X"/>
                 <outlet property="communityAboutTextView" destination="3bC-Dd-eE1" id="YGN-Ol-WWw"/>
                 <outlet property="communityAboutTitleLabel" destination="tzi-NA-0AG" id="tz1-ij-pS0"/>
+                <outlet property="communityAboutView" destination="byC-0u-D95" id="7dy-iv-6X8"/>
                 <outlet property="communityAddMemberCollectionView" destination="wws-Xt-lDI" id="Rmn-6w-Y98"/>
                 <outlet property="communityAddMemberTitleLabel" destination="dJF-r2-71F" id="ccr-bN-t8M"/>
-                <outlet property="communityAddMemberView" destination="sFb-xq-Ix7" id="G9a-1T-apm"/>
+                <outlet property="communityAddMemberView" destination="sFb-xq-Ix7" id="qty-hl-Rw0"/>
                 <outlet property="communityAdminRuleDescLabel" destination="lrM-Xd-ckb" id="dtJ-Xt-Mbx"/>
                 <outlet property="communityAdminRuleSwitch" destination="TgM-5B-un1" id="Jle-oc-v4q"/>
                 <outlet property="communityAdminRuleTitleLabel" destination="eHa-bR-y9D" id="jgk-tX-xGB"/>
                 <outlet property="communityCategoryLabel" destination="g9y-6L-O4K" id="feU-sV-SoK"/>
                 <outlet property="communityCategoryTitleLabel" destination="XWt-hA-ts4" id="HIj-RR-QPm"/>
+                <outlet property="communityCategoryView" destination="eOV-6V-3NG" id="h5A-7d-l4J"/>
                 <outlet property="communityNameCountLabel" destination="Qna-0b-NA0" id="0oe-up-jCF"/>
                 <outlet property="communityNameTextfield" destination="rXD-AP-32g" id="tJT-vU-kIK"/>
                 <outlet property="communityNameTitleLabel" destination="a6T-sj-htM" id="kNX-VH-JyV"/>
+                <outlet property="communityNameView" destination="eql-FW-n8Z" id="6CG-5b-Sw0"/>
                 <outlet property="communityTypeLineView" destination="ZZH-fL-gKi" id="uec-2h-DYo"/>
                 <outlet property="communityTypePrivateDescLabel" destination="BD1-I6-WMd" id="nzT-tR-uxB"/>
                 <outlet property="communityTypePrivateRadioImageView" destination="nxl-HZ-fSr" id="xhv-h4-n39"/>
@@ -39,8 +42,10 @@
                 <outlet property="communityTypePublicDescLabel" destination="Ne6-QA-SBg" id="rJG-LS-v8k"/>
                 <outlet property="communityTypePublicRadioImageView" destination="d3L-al-VCp" id="UgG-cR-dw3"/>
                 <outlet property="communityTypePublicTitleLabel" destination="HcR-dM-HvC" id="MpF-vN-Tw5"/>
+                <outlet property="communityTypeView" destination="8jQ-Yh-u6M" id="lhl-8u-Jls"/>
                 <outlet property="createCommunityButton" destination="vPV-ln-HFk" id="7iK-vx-I2M"/>
                 <outlet property="errorNameLabel" destination="0nX-Kb-3aQ" id="bkt-jN-oc7"/>
+                <outlet property="mainStackView" destination="GLb-h0-okF" id="Gv5-uL-g0P"/>
                 <outlet property="nameLineView" destination="GA1-JN-gLP" id="AVU-TZ-tA3"/>
                 <outlet property="overlayView" destination="gBl-XX-p5d" id="YcB-Z1-9gQ"/>
                 <outlet property="scrollView" destination="4m2-xJ-cho" id="Ijt-yF-JGa"/>

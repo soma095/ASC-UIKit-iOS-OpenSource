@@ -23,17 +23,19 @@ public final class AmityCommunityProfilePageViewController: AmityProfileViewCont
     public override func viewDidLoad() {
         super.viewDidLoad()
         setupFeed()
+        setupViewModel()
+        setupPostButton()
+        showCommunitySettingModal()
     }
     
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setupViewModel()
-        setupPostButton()
+        navigationController?.navigationBar.isHidden = true
+        view.backgroundColor = AmityColorSet.backgroundColor
     }
     
     public override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        showCommunitySettingModal()
     }
     
     public static func make(
