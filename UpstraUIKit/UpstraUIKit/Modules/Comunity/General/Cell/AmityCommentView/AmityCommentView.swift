@@ -32,7 +32,6 @@ class AmityCommentView: AmityView {
     @IBOutlet private var labelContainerView: UIView!
     @IBOutlet private weak var actionStackView: UIStackView!
     @IBOutlet private weak var likeButton: AmityButton!
-    @IBOutlet private weak var replyButton: AmityButton!
     @IBOutlet private weak var optionButton: UIButton!
     @IBOutlet private weak var viewReplyButton: AmityButton!
     @IBOutlet private weak var separatorLineView: UIView!
@@ -58,6 +57,7 @@ class AmityCommentView: AmityView {
     }
     
     private func setupView() {
+      //  replyButton.isHidden = true
       //  reactionDetailLabel.backgroundColor = AmityColorSet.backgroundColor
       //  reactionDetailButton.backgroundColor = AmityColorSet.backgroundColor
         reactionDetailContainerView.backgroundColor = AmityColorSet.backgroundColor
@@ -97,15 +97,15 @@ class AmityCommentView: AmityView {
         likeButton.addTarget(self, action: #selector(likeButtonTap), for: .touchUpInside)
         likeButton.setInsets(forContentPadding: .zero, imageTitlePadding: 4)
         
-        replyButton.setTitle(AmityLocalizedStringSet.General.reply.localizedString, for: .normal)
-        replyButton.setTitleFont(AmityFontSet.captionBold)
-        replyButton.setImage(AmityIconSet.iconReply, for: .normal)
-        replyButton.tintColor = AmityColorSet.base.blend(.shade2)
-        replyButton.setTitleColor(AmityColorSet.primary, for: .selected)
-        replyButton.setTitleColor(AmityColorSet.base.blend(.shade2), for: .normal)
-        replyButton.addTarget(self, action: #selector(replyButtonTap), for: .touchUpInside)
-        replyButton.setInsets(forContentPadding: .zero, imageTitlePadding: 4)
-        
+//        replyButton.setTitle(AmityLocalizedStringSet.General.reply.localizedString, for: .normal)
+//        replyButton.setTitleFont(AmityFontSet.captionBold)
+//        replyButton.setImage(AmityIconSet.iconReply, for: .normal)
+//        replyButton.tintColor = AmityColorSet.base.blend(.shade2)
+//        replyButton.setTitleColor(AmityColorSet.primary, for: .selected)
+//        replyButton.setTitleColor(AmityColorSet.base.blend(.shade2), for: .normal)
+//        replyButton.addTarget(self, action: #selector(replyButtonTap), for: .touchUpInside)
+//        replyButton.setInsets(forContentPadding: .zero, imageTitlePadding: 4)
+      //  replyButton.isHidden = true
         optionButton.addTarget(self, action: #selector(optionButtonTap), for: .touchUpInside)
         optionButton.tintColor = AmityColorSet.base.blend(.shade2)
         
@@ -157,7 +157,7 @@ class AmityCommentView: AmityView {
         let likeButtonTitle = comment.isLiked ? AmityLocalizedStringSet.General.liked.localizedString : AmityLocalizedStringSet.General.like.localizedString
         likeButton.setTitle(likeButtonTitle, for: .normal)
         
-        replyButton.isHidden = layout.type == .reply
+       // replyButton.isHidden = layout.type == .reply
         separatorLineView.isHidden = true
         
         if comment.reactionsCount > 0 {
@@ -184,7 +184,7 @@ class AmityCommentView: AmityView {
     }
     
     func toggleActionVisibility(comment: AmityCommentModel, layout: AmityCommentView.Layout) {
-        let actionButtons = [likeButton, replyButton, optionButton]
+        let actionButtons = [likeButton, optionButton]
         
         if layout.shouldShowActions {
             actionButtons.forEach { $0?.isHidden = false }

@@ -78,6 +78,7 @@ extension AmityPendingPostsScreenViewModel {
     func getPendingPosts() {
         pendingPostsFeedViewModel.getReviewingFeed(hasEditCommunityPermission: memberStatusCommunity == .admin) { [weak self] (postComponents) in
             guard let strongSelf = self else { return }
+            print(postComponents, "post")
             strongSelf.postComponents = postComponents
             strongSelf.delegate?.screenViewModelDidGetPendingPosts(strongSelf)
         }

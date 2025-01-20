@@ -151,10 +151,11 @@ private extension AmityPostFooterTableViewCell {
     }
     
     @IBAction func panelTap() {
-        performAction(action: .tapComment)
+        //performAction(action: .tapComment)
     }
     
     @IBAction func didTapReactionDetails() {
-        performAction(action: .tapReactionDetails)
+        // hidden for QAF-3579
+       // performAction(action: .tapReactionDetails)
     }
 }

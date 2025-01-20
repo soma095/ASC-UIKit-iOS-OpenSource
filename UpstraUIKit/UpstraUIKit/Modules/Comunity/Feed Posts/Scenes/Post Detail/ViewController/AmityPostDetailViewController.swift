@@ -73,11 +73,14 @@ open class AmityPostDetailViewController: AmityViewController {
         setupScreenViewModel()
         setupMentionTableView()
         navigationController?.navigationBar.isHidden = false
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage()
     }
     
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.setBackgroundColor(with: .white)
+        navigationController?.setBackgroundColor(with: AmityColorSet.backgroundColor)
+        navigationController?.view.backgroundColor = AmityColorSet.backgroundColor
         AmityKeyboardService.shared.delegate = self
         mentionManager?.delegate = self
     }
@@ -608,6 +611,7 @@ extension AmityPostDetailViewController: AmityPostDetailCompostViewDelegate {
     }
     
     func composeView(_ view: AmityPostDetailCompostView, didPostText text: String) {
+        print("com")
         let metadata = mentionManager?.getMetadata()
         let mentionees = mentionManager?.getMentionees()
         createComment(withText: text, metadata: metadata, mentionees: mentionees, parentId: parentComment?.id)

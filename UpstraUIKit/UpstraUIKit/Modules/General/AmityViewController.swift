@@ -114,7 +114,7 @@ open class AmityViewController: UIViewController {
         case .root:
             titleFont = AmityFontSet.headerLine
             navigationItem.leftBarButtonItem = UIBarButtonItem(customView: titleLabel)
-            navigationController?.setBackgroundColor(with: .white)
+            navigationController?.setBackgroundColor(with: AmityColorSet.backgroundColor)
         case .present:
             titleFont = AmityFontSet.title
             navigationItem.titleView = titleLabel

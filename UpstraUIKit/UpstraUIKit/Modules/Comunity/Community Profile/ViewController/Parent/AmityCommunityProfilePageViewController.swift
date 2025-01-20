@@ -26,6 +26,7 @@ public final class AmityCommunityProfilePageViewController: AmityProfileViewCont
         setupViewModel()
         setupPostButton()
         showCommunitySettingModal()
+        self.bottom.handleRefreshFeed()
     }
     
     public override func viewWillAppear(_ animated: Bool) {

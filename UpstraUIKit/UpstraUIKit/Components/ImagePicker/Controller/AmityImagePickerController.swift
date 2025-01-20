@@ -97,7 +97,7 @@ import Photos
         assetsViewController.delegate = self
         
         viewControllers = [assetsViewController]
-        view.backgroundColor = settings.theme.backgroundColor
+        view.backgroundColor = AmityColorSet.backgroundColor
 
         // Setup delegates
         delegate = zoomTransitionDelegate

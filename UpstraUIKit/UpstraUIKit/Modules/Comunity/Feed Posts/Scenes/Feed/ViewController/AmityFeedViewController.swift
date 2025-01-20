@@ -438,7 +438,9 @@ extension AmityFeedViewController: AmityPostFooterProtocolHandlerDelegate {
             } else {
                 screenViewModel.action.like(id: post.postId, referenceType: .post)
             }
-        case .tapComment, .tapReactionDetails:
+        case .tapComment:
+            AmityEventHandler.shared.postDidtap(from: self, postId: post.postId)
+          case .tapReactionDetails:
             AmityEventHandler.shared.postDidtap(from: self, postId: post.postId)
         }
     }

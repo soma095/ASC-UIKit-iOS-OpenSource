@@ -69,7 +69,6 @@ class AmityPostDetailCompostView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        
         if resizingRequires {
             isOversized = textView.contentSize.height >= Constant.maxTextViewHeight
             resizingRequires = false
@@ -213,6 +212,7 @@ class AmityPostDetailCompostView: UIView {
     }
     
     @objc private func postButtonTap() {
+        print("here tap")
         delegate?.composeView(self, didPostText: textView.text ?? "")
     }
     
@@ -245,5 +245,9 @@ extension AmityPostDetailCompostView: AmityTextViewDelegate {
     
     func textViewDidChangeSelection(_ textView: AmityTextView) {
         delegate?.composeViewDidChangeSelection(self)
+    }
+    
+    func textViewDidBeginEditing(_ textView: AmityTextView) {
+        delegate?.composeViewDidTapExpand(self)
     }
 }
