@@ -84,6 +84,9 @@ final class AmityCommunityProfileHeaderViewController: UIViewController {
     
     // MARK: - Setup views
     private func setupDisplayName() {
+        avatarView.isAccessibilityElement = true
+        avatarView.accessibilityLabel = "Community header image"
+        avatarView.accessibilityTraits = .image
         avatarView.placeholder = AmityIconSet.defaultCommunity
         avatarView.contentMode = .scaleAspectFill
         gradient.colors = [UIColor.clear.cgColor, UIColor.black.withAlphaComponent(0.3).cgColor]
@@ -94,6 +97,10 @@ final class AmityCommunityProfileHeaderViewController: UIViewController {
         displayNameLabel.font = AmityFontSet.headerLine
         displayNameLabel.textColor = AmityColorSet.baseInverse
         displayNameLabel.numberOfLines = 0
+        displayNameLabel.isAccessibilityElement = true
+        displayNameLabel.accessibilityLabel = "Community name"
+        displayNameLabel.accessibilityValue = displayNameLabel.text
+        displayNameLabel.accessibilityTraits = .staticText
         
         separatorView.backgroundColor = AmityColorSet.base.blend(.shade3)
     }
@@ -133,6 +140,10 @@ final class AmityCommunityProfileHeaderViewController: UIViewController {
         attribute.addAttributes([.font : AmityFontSet.bodyBold,
                                  .foregroundColor: AmityColorSet.base], range: range)
         postLabel.attributedText = attribute
+        postLabel.isAccessibilityElement = true
+        postLabel.accessibilityLabel = "Number of posts"
+        postLabel.accessibilityValue = string
+        postLabel.accessibilityTraits = .staticText
     }
     
     private func updateMemberLabel(memberCount: Int) {
@@ -148,6 +159,12 @@ final class AmityCommunityProfileHeaderViewController: UIViewController {
         attribute.addAttributes([.font : AmityFontSet.bodyBold,
                                  .foregroundColor: AmityColorSet.base], range: range)
         memberLabel.attributedText = attribute
+        
+        memberLabel.attributedText = attribute
+        memberLabel.isAccessibilityElement = true
+        memberLabel.accessibilityLabel = "Number of members"
+        memberLabel.accessibilityValue = string
+        memberLabel.accessibilityTraits = .staticText
     }
     
     private func setupDescription() {

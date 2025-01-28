@@ -41,6 +41,7 @@ class AmityCategorySeletionTableViewCell: UITableViewCell, Nibbable {
     
     func configure(category: AmityCommunityCategory, shouldSelectionEnable: Bool) {
         titleLabel.text = category.name
+        titleLabel.textColor = AmityColorSet.base
         avatarView.setImage(withImageURL: category.avatar?.fileURL ?? "", placeholder: AmityIconSet.defaultCategory)
         self.shouldSelectionEnable = shouldSelectionEnable
         checkmarkTrailingConstraint.constant = shouldSelectionEnable ? 38 : 8

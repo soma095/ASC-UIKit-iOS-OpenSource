@@ -47,6 +47,10 @@ public final class AmityPostFileTableViewCell: UITableViewCell, Nibbable, AmityP
         } else {
             contentLabel.text = post.text
         }
+        contentLabel.isAccessibilityElement = true
+        contentLabel.accessibilityLabel = "Post content"
+        contentLabel.accessibilityValue = post.text
+        contentLabel.accessibilityTraits = .staticText
         contentLabel.isExpanded = post.appearance.shouldContentExpand
         fileTableView.isExpanded = post.appearance.shouldContentExpand
         heightConstraint.constant = AmityFileTableView.height(for: post.files.count, isEdtingMode: false, isExpanded: post.appearance.shouldContentExpand)

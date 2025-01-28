@@ -89,6 +89,8 @@ import Photos
         super.viewDidLoad()
         
         // Sync settings
+        navigationController?.setBackgroundColor(with: AmityColorSet.backgroundColor)
+        navigationController?.view.backgroundColor = AmityColorSet.backgroundColor
         albumsViewController.settings = settings
         assetsViewController.settings = settings
         
@@ -130,8 +132,12 @@ import Photos
 
         cancelButton.target = self
         cancelButton.action = #selector(cancelButtonPressed(_:))
-        cancelButton.tintColor = AmityColorSet.secondary
+        cancelButton.tintColor = AmityColorSet.base
         firstViewController?.navigationItem.leftBarButtonItem = cancelButton
+        
+        let manageButton = UIBarButtonItem(title: "Manage", style: .plain, target: self, action: #selector(manageButtonPressed(_:)))
+           manageButton.tintColor = AmityColorSet.primary
+           firstViewController?.navigationItem.rightBarButtonItems = [doneButton, manageButton]
         
         updatedDoneButton()
         updateAlbumButton()
@@ -140,9 +146,39 @@ import Photos
         if navigationBar.barTintColor == nil {
             navigationBar.barTintColor = AmityColorSet.backgroundColor
         }
-
         if let firstAlbum = albums.first {
             select(album: firstAlbum)
+        }
+    }
+    
+    @objc private func manageButtonPressed(_ sender: UIBarButtonItem) {
+        PHPhotoLibrary.requestAuthorization(for: .readWrite) { status in
+            DispatchQueue.main.async {
+                switch status {
+                case .authorized:
+                    // User granted full access
+                    print("Full access granted.")
+                case .limited:
+                    // User granted limited access
+                    PHPhotoLibrary.shared().presentLimitedLibraryPicker(from: self)
+                case .denied, .restricted:
+                    // Prompt user to go to settings
+                    let alert = UIAlertController(
+                        title: "Photo Library Access",
+                        message: "To manage your photo library permissions, go to Settings and update your preferences.",
+                        preferredStyle: .alert
+                    )
+                    alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+                    alert.addAction(UIAlertAction(title: "Settings", style: .default) { _ in
+                        if let url = URL(string: UIApplication.openSettingsURLString) {
+                            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                        }
+                    })
+                    self.present(alert, animated: true, completion: nil)
+                default:
+                    break
+                }
+            }
         }
     }
 

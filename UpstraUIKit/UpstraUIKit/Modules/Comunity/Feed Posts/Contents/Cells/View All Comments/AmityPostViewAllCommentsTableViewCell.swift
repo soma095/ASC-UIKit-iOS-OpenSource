@@ -20,6 +20,9 @@ public class AmityPostViewAllCommentsTableViewCell: UITableViewCell, Nibbable, A
         titleLabel.text = AmityLocalizedStringSet.viewAllCommentsTitle.localizedString
         titleLabel.font = AmityFontSet.bodyBold
         titleLabel.textColor = AmityColorSet.base
-    }
-    
+        titleLabel.isAccessibilityElement = true
+        titleLabel.accessibilityLabel = "View all comments"
+        titleLabel.accessibilityValue = titleLabel.text
+        titleLabel.accessibilityTraits = .staticText
+    } 
 }

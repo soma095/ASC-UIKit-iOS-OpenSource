@@ -10,6 +10,8 @@ import UIKit
 
 class AmityReactionUserTableViewCell: UITableViewCell, Nibbable {
 
+  
+    @IBOutlet weak var tableContentView: UIView!
     @IBOutlet private weak var userAvatarView: AmityAvatarView!
     @IBOutlet private weak var displayNameLabel: UILabel!
     
@@ -29,6 +31,7 @@ class AmityReactionUserTableViewCell: UITableViewCell, Nibbable {
 
         displayNameLabel.font = AmityFontSet.bodyBold
         displayNameLabel.textColor = AmityColorSet.base
+        tableContentView.backgroundColor = AmityColorSet.backgroundColor
     }
     
     func display(with model: ReactionUser) {

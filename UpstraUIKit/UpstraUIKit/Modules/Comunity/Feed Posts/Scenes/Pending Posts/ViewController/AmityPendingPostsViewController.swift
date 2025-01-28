@@ -24,6 +24,9 @@ public final class AmityPendingPostsViewController: AmityViewController {
         setupView()
         setupTableView()
         setupViewModel()
+        navigationController?.navigationBar.isHidden = false
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage()
     }
     
     public override func didTapLeftBarButton() {

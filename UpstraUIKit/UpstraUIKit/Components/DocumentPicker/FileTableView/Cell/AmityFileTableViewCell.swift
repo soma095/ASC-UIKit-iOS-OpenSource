@@ -38,9 +38,13 @@ class AmityFileTableViewCell: UITableViewCell, Nibbable {
     @IBOutlet weak var exclamationImageView: UIImageView!
     @IBOutlet weak var exclamationBackgroundView: UIView!
     
+    @IBOutlet weak var mainContainer: UIView!
     override func awakeFromNib() {
         super.awakeFromNib()
         selectionStyle = .none
+        errorOverlayView.backgroundColor = AmityColorSet.backgroundColor
+        mainContainer.backgroundColor = AmityColorSet.backgroundColor
+        containerView.backgroundColor = AmityColorSet.backgroundColor
         containerView.clipsToBounds = true
         containerView.layer.cornerRadius = 4
         containerView.layer.borderWidth = 1
@@ -52,7 +56,7 @@ class AmityFileTableViewCell: UITableViewCell, Nibbable {
         subtitleLabel.font = AmityFontSet.caption
         subtitleLabel.textColor = AmityColorSet.base.blend(.shade1)
         progressView.transform = CGAffineTransform(scaleX: 1, y: 32)
-        progressView.progressTintColor = AmityColorSet.secondary.blend(.shade4)
+        progressView.progressTintColor = AmityColorSet.base
         progressView.trackTintColor = .clear
         progressView.progress = 0.0
         exclamationImageView.image = AmityIconSet.iconExclamation
@@ -116,7 +120,7 @@ class AmityFileTableViewCell: UITableViewCell, Nibbable {
             errorOverlayView.isHidden = true
         case .uploaded:
             closeButton.isHidden = false
-            progressView.isHidden = false
+            progressView.isHidden = true
             progressView.setProgress(1, animated: false)
             containerView.layer.borderWidth = 0.0
             errorOverlayView.isHidden = true

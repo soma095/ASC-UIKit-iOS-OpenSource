@@ -108,6 +108,7 @@ public final class AmityReactionUsersViewController: AmityViewController {
         tableView.delegate = self
         tableView.separatorStyle = .none
         tableView.refreshControl = refreshControl
+        tableView.backgroundColor = AmityColorSet.backgroundColor
     }
     
     private func showEmptyState() {

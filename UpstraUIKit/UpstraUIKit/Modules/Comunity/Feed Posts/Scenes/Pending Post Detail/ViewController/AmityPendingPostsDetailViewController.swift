@@ -21,6 +21,9 @@ public final class AmityPendingPostsDetailViewController: AmityViewController {
         super.viewDidLoad()
         setupTableView()
         setupViewModel()
+        navigationController?.navigationBar.isHidden = false
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage()
     }
     
     public static func make(communityId: String, postId: String) -> AmityPendingPostsDetailViewController {
@@ -38,7 +41,7 @@ public final class AmityPendingPostsDetailViewController: AmityViewController {
     
     // MARK: - Setup views
     private func setupTableView() {
-        tableView.backgroundColor = AmityColorSet.secondary.blend(.shade4)
+        tableView.backgroundColor = AmityColorSet.backgroundColor
         tableView.tableFooterView = UIView()
         tableView.separatorStyle = .none
         tableView.showsVerticalScrollIndicator = false

@@ -64,6 +64,7 @@ public class AmityCategoryPickerViewController: AmityViewController {
     
     private func setupTableView() {
         tableView.separatorStyle = .none
+        tableView.backgroundColor = AmityColorSet.backgroundColor
         tableView.register(AmityCategorySeletionTableViewCell.nib, forCellReuseIdentifier: AmityCategorySeletionTableViewCell.identifier)
         tableView.dataSource = self
         tableView.delegate = self

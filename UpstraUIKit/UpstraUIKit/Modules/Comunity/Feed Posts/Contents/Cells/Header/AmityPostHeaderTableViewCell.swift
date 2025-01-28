@@ -40,13 +40,23 @@ public final class AmityPostHeaderTableViewCell: UITableViewCell, Nibbable, Amit
         avatarView.actionHandler = { [weak self] in
            // self?.avatarTap()
         }
-
+        avatarView.isAccessibilityElement = true // Enable accessibility for this view
+        avatarView.accessibilityLabel = "Profile Picture" // Description for screen readers
+        avatarView.accessibilityTraits = .image
         displayNameLabel.configure(displayName: post.displayName,
                                    communityName: post.targetCommunity?.displayName,
                                    isOfficial: post.targetCommunity?.isOfficial ?? false,
                                    shouldShowCommunityName: post.appearance.shouldShowCommunityName, shouldShowBannedSymbol: post.postedUser?.isGlobalBan ?? false)
         displayNameLabel.delegate = self
+        displayNameLabel.isAccessibilityElement = true
+        displayNameLabel.accessibilityLabel = "Display name"
+        displayNameLabel.accessibilityValue = displayNameLabel.text
+        displayNameLabel.accessibilityTraits = .staticText
         datetimeLabel.text = post.subtitle
+        datetimeLabel.isAccessibilityElement = true
+        datetimeLabel.accessibilityLabel = "Date and time"
+        datetimeLabel.accessibilityValue = datetimeLabel.text
+        datetimeLabel.accessibilityTraits = .staticText
         
 
         switch post.feedType {

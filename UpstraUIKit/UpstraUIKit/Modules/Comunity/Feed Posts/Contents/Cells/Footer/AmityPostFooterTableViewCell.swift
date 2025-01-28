@@ -48,6 +48,10 @@ public final class AmityPostFooterTableViewCell: UITableViewCell, Nibbable, Amit
     public func display(post: AmityPostModel) {
         self.post = post
         likeButton.isSelected = post.isLiked
+        likeButton.isAccessibilityElement = true
+        likeButton.accessibilityLabel = "Like button"
+        likeButton.accessibilityValue = post.isLiked ? "Liked" : "Not liked"
+        likeButton.accessibilityTraits = [.button, post.isLiked ? .selected : .none]
         likeLabel.isHidden = post.reactionsCount == 0
         likeLabelIcon.isHidden = post.reactionsCount == 0
         likeDetailButton.isEnabled = post.reactionsCount != 0
@@ -59,6 +63,10 @@ public final class AmityPostFooterTableViewCell: UITableViewCell, Nibbable, Amit
         commentLabel.text = String.localizedStringWithFormat(commentPrefix,
                                                              post.allCommentCount.formatUsingAbbrevation())
         
+        commentLabel.isAccessibilityElement = true
+        commentLabel.accessibilityLabel = "Number of comments"
+        commentLabel.accessibilityValue = "\(post.allCommentCount.formatUsingAbbrevation()) comments"
+        commentLabel.accessibilityTraits = .staticText
         let isReactionExisted = post.reactionsCount == 0 && post.allCommentCount == 0
         actionStackView.isHidden = !post.isCommentable
         warningLabel.isHidden = post.isCommentable
@@ -155,7 +163,6 @@ private extension AmityPostFooterTableViewCell {
     }
     
     @IBAction func didTapReactionDetails() {
-        // hidden for QAF-3579
-       // performAction(action: .tapReactionDetails)
+        performAction(action: .tapReactionDetails)
     }
 }
