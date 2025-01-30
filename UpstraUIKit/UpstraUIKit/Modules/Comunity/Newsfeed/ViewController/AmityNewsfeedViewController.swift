@@ -33,7 +33,7 @@ public class AmityNewsfeedViewController: AmityViewController, IndicatorInfoProv
         setupFeedView()
         setupEmptyView()
         setupHeaderView()
-        setupPostButton()
+       // setupPostButton()
     }
     
     public override func viewWillAppear(_ animated: Bool) {
@@ -77,13 +77,6 @@ private extension AmityNewsfeedViewController {
             guard let parent = self?.parent as? AmityCommunityHomePageViewController else { return }
             // Switch to explore tap which is an index 1.
             parent.setCurrentIndex(1)
-        }
-        emptyView.createHandler = { [weak self] in
-            let vc = AmityCommunityCreatorViewController.make()
-            vc.delegate = self
-            let nav = UINavigationController(rootViewController: vc)
-            nav.modalPresentationStyle = .overFullScreen
-            self?.present(nav, animated: true, completion: nil)
         }
         feedViewController.emptyView = emptyView
 

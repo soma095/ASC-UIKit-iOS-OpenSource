@@ -75,7 +75,7 @@ class AmityCommentView: AmityView {
         contentLabel.textColor = AmityColorSet.base
         contentLabel.font = AmityFontSet.body
         contentLabel.numberOfLines = 8
-        separatorLineView.backgroundColor  = AmityColorSet.secondary.blend(.shade4)
+        separatorLineView.backgroundColor  = AmityColorSet.base.blend(.shade4)
         
         labelContainerView.backgroundColor = AmityColorSet.commentBackgroundColor
         labelContainerView.layer.cornerRadius = 12
@@ -158,7 +158,7 @@ class AmityCommentView: AmityView {
         likeButton.setTitle(likeButtonTitle, for: .normal)
         
        // replyButton.isHidden = layout.type == .reply
-        separatorLineView.isHidden = true
+    //    separatorLineView.isHidden = true
         
         if comment.reactionsCount > 0 {
             reactionDetailContainerView.isHidden = false

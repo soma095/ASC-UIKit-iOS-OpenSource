@@ -31,8 +31,11 @@ public final class AmityCommunityProfilePageViewController: AmityProfileViewCont
     
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.navigationBar.isHidden = true
+        navigationController?.navigationBar.isHidden = false
         view.backgroundColor = AmityColorSet.backgroundColor
+        navigationController?.navigationBar.isHidden = false
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage()
     }
     
     public override func viewDidAppear(_ animated: Bool) {
@@ -96,12 +99,6 @@ public final class AmityCommunityProfilePageViewController: AmityProfileViewCont
         }
     }
     
-    private func setupNavigationItemOption(show isJoined: Bool) {
-        let item = UIBarButtonItem(image: AmityIconSet.iconOption, style: .plain, target: self, action: #selector(optionTap))
-        item.tintColor = AmityColorSet.base
-        navigationItem.rightBarButtonItem = isJoined ? item : nil
-    }
-    
     private func showCommunitySettingModal() {
         if AmityCommunityProfilePageViewController.newCreatedCommunityIds.contains(screenViewModel.dataSource.communityId) {
             let firstAction = AmityDefaultModalModel.Action(title: AmityLocalizedStringSet.communitySettings,
@@ -159,7 +156,6 @@ extension AmityCommunityProfilePageViewController: AmityCommunityProfileScreenVi
             postButton.isHidden = !community.isJoined
         }
         header.updateView()
-        setupNavigationItemOption(show: community.isJoined)
         AmityHUD.hide()
     }
     

@@ -47,12 +47,12 @@ final class AmityNewsfeedEmptyView: AmityView {
         exploreCommunityButton.tintColor = AmityColorSet.baseInverse
         exploreCommunityButton.contentEdgeInsets = .init(top: 0, left: 30, bottom: 0, right: 30)
         exploreCommunityButton.layer.cornerRadius = 4
-        
-        createCommunityButton.setTitle(AmityLocalizedStringSet.emptyNewsfeedCreateButton.localizedString, for: .normal)
-        createCommunityButton.setTitleFont(AmityFontSet.body)
-        createCommunityButton.setTitleColor(AmityColorSet.primary, for: .normal)
-        createCommunityButton.setTitleColor(AmityColorSet.primary.blend(.shade2), for: .disabled)
-        createCommunityButton.isEnabled = Reachability.shared.isConnectedToNetwork
+        createCommunityButton.isHidden = true
+//        createCommunityButton.setTitle(AmityLocalizedStringSet.emptyNewsfeedCreateButton.localizedString, for: .normal)
+//        createCommunityButton.setTitleFont(AmityFontSet.body)
+//        createCommunityButton.setTitleColor(AmityColorSet.primary, for: .normal)
+//        createCommunityButton.setTitleColor(AmityColorSet.primary.blend(.shade2), for: .disabled)
+//        createCommunityButton.isEnabled = Reachability.shared.isConnectedToNetwork
     }
     
     func setNeedsUpdateState() {

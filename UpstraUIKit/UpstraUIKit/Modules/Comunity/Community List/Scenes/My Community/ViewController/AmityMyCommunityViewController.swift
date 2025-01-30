@@ -29,14 +29,14 @@ public final class AmityMyCommunityViewController: AmityViewController, Indicato
     public override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
-        setupSearchController()
+       // setupSearchController()
         setupTableView()
         setupScreenViewModel()
     }
 
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        searchController.searchBar.text = screenViewModel.dataSource.searchText
+       // searchController.searchBar.text = screenViewModel.dataSource.searchText
     }
     
     public static func make() -> AmityMyCommunityViewController {
@@ -94,7 +94,7 @@ public final class AmityMyCommunityViewController: AmityViewController, Indicato
     }
     
     private func setupTableView() {
-        tableView.tableHeaderView = searchController.searchBar
+       // tableView.tableHeaderView = searchController.searchBar
         tableView.setContentOffset(CGPoint(x: 0, y: 50), animated: true)
         tableView.register(cell: AmityMyCommunityTableViewCell.self)
         tableView.delegate = self
@@ -102,6 +102,7 @@ public final class AmityMyCommunityViewController: AmityViewController, Indicato
         tableView.tableFooterView = UIView()
         tableView.keyboardDismissMode = .onDrag
         tableView.separatorColor = .clear
+        tableView.backgroundColor = AmityColorSet.backgroundColor
         
         emptyView.topMargin = 100
     }
@@ -118,9 +119,9 @@ public final class AmityMyCommunityViewController: AmityViewController, Indicato
 extension AmityMyCommunityViewController: UITableViewDelegate {
     
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        searchController.isActive = false
-        searchController.searchBar.setShowsCancelButton(false, animated: true)
-        searchController.searchBar.text = screenViewModel.dataSource.searchText
+//        searchController.isActive = false
+//        searchController.searchBar.setShowsCancelButton(false, animated: true)
+//        searchController.searchBar.text = screenViewModel.dataSource.searchText
         guard let communityId = screenViewModel.dataSource.item(at: indexPath)?.communityId else { return }
         AmityEventHandler.shared.communityDidTap(from: self, communityId: communityId)
     }

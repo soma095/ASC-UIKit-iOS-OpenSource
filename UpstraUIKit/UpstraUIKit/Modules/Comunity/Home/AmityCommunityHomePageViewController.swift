@@ -17,7 +17,7 @@ public class AmityCommunityHomePageViewController: AmityPageViewController {
     
     private init() {
         super.init(nibName: AmityCommunityHomePageViewController.identifier, bundle: AmityUIKitManager.bundle)
-        title = AmityLocalizedStringSet.communityHomeTitle.localizedString
+//        title = AmityLocalizedStringSet.communityHomeTitle.localizedString
     }
     
     required init?(coder: NSCoder) {
@@ -26,7 +26,13 @@ public class AmityCommunityHomePageViewController: AmityPageViewController {
     
     public override func viewDidLoad() {
         super.viewDidLoad()
-        setupNavigationBar(moveToIndex: 0)
+        navigationController?.navigationBar.isHidden = true
+       // setupNavigationBar(moveToIndex: 0)
+    }
+    
+    public override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.isHidden = true
     }
     
     public static func make() -> AmityCommunityHomePageViewController {
@@ -35,14 +41,14 @@ public class AmityCommunityHomePageViewController: AmityPageViewController {
     
     override func moveToViewController(at index: Int, animated: Bool = true) {
         super.moveToViewController(at: index, animated: animated)
-        setupNavigationBar(moveToIndex: index)
+       // setupNavigationBar(moveToIndex: index)
     }
     
     override func viewControllers(for pagerTabStripController: AmityPagerTabViewController) -> [UIViewController] {
         newsFeedVC.pageTitle = AmityLocalizedStringSet.newsfeedTitle.localizedString
         exploreVC.pageTitle = AmityLocalizedStringSet.exploreTitle.localizedString
-        myCommunityVC.pageTitle = "My Communities"
-        return [newsFeedVC, exploreVC, myCommunityVC]
+        myCommunityVC.pageTitle = "Threads"
+        return [newsFeedVC,myCommunityVC]
     }
     
     // MARK: - Setup view
