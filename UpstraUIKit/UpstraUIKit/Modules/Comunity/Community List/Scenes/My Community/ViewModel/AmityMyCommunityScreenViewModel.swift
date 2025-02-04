@@ -49,9 +49,9 @@ extension AmityMyCommunityScreenViewModel {
         
         delegate?.screenViewModel(self, loadingState: .loading)
         communityListRepositoryManager.search(withText: "", filter: .userIsMember) { [weak self] (communityList) in
-            self?.debouncer.run {
+          //  self?.debouncer.run {
                 self?.prepareData(isRetrieveAllCommunity: true, communityList: communityList)
-            }
+          //  }
         }
     }
     

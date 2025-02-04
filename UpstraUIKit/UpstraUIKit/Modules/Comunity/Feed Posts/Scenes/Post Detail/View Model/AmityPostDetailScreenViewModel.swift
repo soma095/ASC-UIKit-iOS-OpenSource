@@ -190,9 +190,9 @@ extension AmityPostDetailScreenViewModel {
             switch result {
             case .success(let post):
                 self?.post = post
-                self?.debouncer.run {
+             //   self?.debouncer.run {
                     self?.prepareData()
-                }
+             //   }
             case .failure:
                 break
             }

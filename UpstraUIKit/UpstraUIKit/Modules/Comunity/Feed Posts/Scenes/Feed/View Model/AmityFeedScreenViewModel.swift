@@ -102,9 +102,9 @@ extension AmityFeedScreenViewModel {
             guard let strongSelf = self else { return }
             switch result {
             case .success(let posts):
-                strongSelf.debouncer.run {
+               // strongSelf.debouncer.run {
                     strongSelf.prepareComponents(posts: posts)
-                }
+               // }
             case .failure(let error):
                 strongSelf.debouncer.run {
                     strongSelf.prepareComponents(posts: [])

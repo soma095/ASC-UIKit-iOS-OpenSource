@@ -15,11 +15,11 @@ final class AmityNewsfeedEmptyView: AmityView {
     @IBOutlet private var titleLabel: UILabel!
     @IBOutlet private var subtitleLabel: UILabel!
     @IBOutlet private var exploreCommunityButton: AmityButton!
-    @IBOutlet private var createCommunityButton: AmityButton!
+  //  @IBOutlet private var createCommunityButton: AmityButton!
     
     // MARK: - Properties
     var exploreHandler: (() -> Void)?
-    var createHandler: (() -> Void)?
+   // var createHandler: (() -> Void)?
     
     override func initial() {
         loadNibContent()
@@ -47,7 +47,7 @@ final class AmityNewsfeedEmptyView: AmityView {
         exploreCommunityButton.tintColor = AmityColorSet.baseInverse
         exploreCommunityButton.contentEdgeInsets = .init(top: 0, left: 30, bottom: 0, right: 30)
         exploreCommunityButton.layer.cornerRadius = 4
-        createCommunityButton.isHidden = true
+       // createCommunityButton.isHidden = true
 //        createCommunityButton.setTitle(AmityLocalizedStringSet.emptyNewsfeedCreateButton.localizedString, for: .normal)
 //        createCommunityButton.setTitleFont(AmityFontSet.body)
 //        createCommunityButton.setTitleColor(AmityColorSet.primary, for: .normal)
@@ -56,7 +56,7 @@ final class AmityNewsfeedEmptyView: AmityView {
     }
     
     func setNeedsUpdateState() {
-        createCommunityButton.isEnabled = Reachability.shared.isConnectedToNetwork
+       // createCommunityButton.isEnabled = Reachability.shared.isConnectedToNetwork
     }
     
 }
@@ -67,7 +67,7 @@ private extension AmityNewsfeedEmptyView {
         exploreHandler?()
     }
     
-    @IBAction func createCommunityTap() {
-        createHandler?()
-    }
+//    @IBAction func createCommunityTap() {
+//      //  createHandler?()
+//    }
 }

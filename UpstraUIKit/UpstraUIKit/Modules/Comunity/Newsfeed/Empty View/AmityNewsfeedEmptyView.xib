@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AmityNewsfeedEmptyView" customModule="UpstraUIKit" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AmityNewsfeedEmptyView" customModule="AmityUIKit" customModuleProvider="target">
             <connections>
-                <outlet property="createCommunityButton" destination="5gz-ZL-mCQ" id="qLl-Ys-AuJ"/>
                 <outlet property="exploreCommunityButton" destination="8dF-Av-WbV" id="ii3-PU-aeb"/>
                 <outlet property="imageView" destination="r38-o5-ZXg" id="PtW-6g-NTq"/>
                 <outlet property="subtitleLabel" destination="YDT-dF-GDc" id="Ufl-sT-2w7"/>
@@ -24,13 +23,13 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="mT6-H3-Pel">
-                    <rect key="frame" x="40" y="44" width="334" height="818"/>
+                    <rect key="frame" x="40" y="48" width="334" height="814"/>
                     <subviews>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="empty_newsfeed" translatesAutoresizingMaskIntoConstraints="NO" id="r38-o5-ZXg">
-                            <rect key="frame" x="130.5" y="0.0" width="73" height="633"/>
+                            <rect key="frame" x="130.5" y="0.0" width="73" height="689"/>
                         </imageView>
                         <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="z65-Xi-9OX">
-                            <rect key="frame" x="33" y="653" width="268" height="45"/>
+                            <rect key="frame" x="33" y="709" width="268" height="45"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Your feed is empty" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VRW-6u-3eK">
                                     <rect key="frame" x="0.0" y="0.0" width="268" height="20.5"/>
@@ -46,24 +45,14 @@
                                 </label>
                             </subviews>
                         </stackView>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8dF-Av-WbV" customClass="AmityButton" customModule="UpstraUIKit" customModuleProvider="target">
-                            <rect key="frame" x="144" y="718" width="46" height="40"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8dF-Av-WbV" customClass="AmityButton" customModule="AmityUIKit" customModuleProvider="target">
+                            <rect key="frame" x="144" y="774" width="46" height="40"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="NPG-el-Zsf"/>
                             </constraints>
                             <state key="normal" title="Button"/>
                             <connections>
                                 <action selector="exploreCommunityTap" destination="-1" eventType="touchUpInside" id="PEh-lX-jHZ"/>
-                            </connections>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5gz-ZL-mCQ" customClass="AmityButton" customModule="UpstraUIKit" customModuleProvider="target">
-                            <rect key="frame" x="144" y="778" width="46" height="40"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="40" id="4n6-Fr-Lop"/>
-                            </constraints>
-                            <state key="normal" title="Button"/>
-                            <connections>
-                                <action selector="createCommunityTap" destination="-1" eventType="touchUpInside" id="lsS-I7-cnU"/>
                             </connections>
                         </button>
                     </subviews>

@@ -547,6 +547,21 @@ public class AmityPostTextEditorViewController: AmityViewController {
         present(alertController, animated: true, completion: nil)
     }
     
+    private func presentMaxNumberReachVideoDialogue() {
+        let alertController = UIAlertController(
+            title: "Maximum number of videos exceeded",
+            message: "Maximum number of videos that can be uploaded is \(Constant.maximumNumberOfImages). The rest videos will be discarded.",
+            preferredStyle: .alert
+        )
+        let cancelAction = UIAlertAction(
+            title: AmityLocalizedStringSet.General.ok.localizedString,
+            style: .cancel,
+            handler: nil
+        )
+        alertController.addAction(cancelAction)
+        present(alertController, animated: true, completion: nil)
+    }
+    
     private func presentMediaPickerCamera() {
         
         let cameraPicker = UIImagePickerController()
@@ -887,7 +902,11 @@ extension AmityPostTextEditorViewController: AmityPostTextEditorMenuViewDelegate
     private func addMedias(_ medias: [AmityMedia], type: AmityMediaType) {
         let totalNumberOfMedias = galleryView.medias.count + medias.count
         guard totalNumberOfMedias <= Constant.maximumNumberOfImages else {
-            presentMaxNumberReachDialogue()
+            if type == .image {
+                presentMaxNumberReachDialogue()
+            } else if type == .video {
+                presentMaxNumberReachVideoDialogue()
+            }
             return
         }
         galleryView.addMedias(medias)
