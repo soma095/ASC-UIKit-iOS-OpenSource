@@ -187,10 +187,10 @@
                     </subviews>
                 </stackView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cA7-hE-AlO" userLabel="Separator View">
-                    <rect key="frame" x="0.0" y="182" width="334" height="1"/>
+                    <rect key="frame" x="0.0" y="182.5" width="334" height="0.5"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="1" id="6lm-n6-IwM"/>
+                        <constraint firstAttribute="height" constant="0.5" id="6lm-n6-IwM"/>
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TUA-4u-J0C">
