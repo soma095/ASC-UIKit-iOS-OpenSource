@@ -70,7 +70,6 @@ public class AmityCommunityHomePageViewController: AmityPageViewController {
         rightBarItems.append(searchItem)
         
         navigationItem.rightBarButtonItems = rightBarItems
-
     }
     
     @objc func createCommunityTap() {
