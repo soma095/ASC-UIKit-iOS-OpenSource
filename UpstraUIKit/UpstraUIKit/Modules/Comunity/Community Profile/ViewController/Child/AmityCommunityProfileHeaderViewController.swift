@@ -328,14 +328,11 @@ final class AmityCommunityProfileHeaderViewController: UIViewController {
             pendingPostsContainerView.isHidden = true
             self.isUpdateInProgress = false
         case .member:
-            screenViewModel.action.getPendingPostCount { [weak self] pendingPostsCount in
-                self?.pendingPostsContainerView.isHidden = pendingPostsCount == 0
-                self?.pendingPostsDescriptionLabel.text = AmityLocalizedStringSet.PendingPosts.statusMemberDesc.localizedString
-                self?.didUpdatePostBanner?()
-                self?.isUpdateInProgress = false
-            }
+            pendingPostsContainerView.isHidden = true
+            self.isUpdateInProgress = false
         case .admin:
             screenViewModel.action.getPendingPostCount { [weak self] pendingPostsCount in
+                print("pending count", pendingPostsCount)
                 self?.pendingPostsContainerView.isHidden = pendingPostsCount == 0
                 self?.pendingPostsDescriptionLabel.text = String.localizedStringWithFormat(AmityLocalizedStringSet.PendingPosts.statusAdminDesc.localizedString, pendingPostsCount)
                 self?.didUpdatePostBanner?()
