@@ -157,22 +157,22 @@ open class AmityEventHandler {
         
         #if canImport(AmityUIKit4)
         
-        let storyCompletion: ((AmityPostContentType) -> Void) = { postContentType in
-            let storyTargetSelectionPage = AmityStoryTargetSelectionPage()
-            let navPostTargetVC = UINavigationController(rootViewController: AmitySwiftUIHostingController(rootView: storyTargetSelectionPage))
-            navPostTargetVC.isNavigationBarHidden = true
-            navPostTargetVC.modalPresentationStyle = .fullScreen
-            source.present(navPostTargetVC, animated: true, completion: nil)
-        }
-        if postOption.contains(.story) {
-            
-            imageOptions.append(ImageItemOption(title: AmityLocalizedStringSet.General.story.localizedString, image: AmityIconSet.CreatePost.iconStory) {
-                storyCompletion(.story)
-            })
-        }
-        AmityBottomSheet.present(options: imageOptions, from: source)
-        #else
-        AmityBottomSheet.present(options: imageOptions, from: source)
+//        let storyCompletion: ((AmityPostContentType) -> Void) = { postContentType in
+//            let storyTargetSelectionPage = AmityStoryTargetSelectionPage()
+//            let navPostTargetVC = UINavigationController(rootViewController: AmitySwiftUIHostingController(rootView: storyTargetSelectionPage))
+//            navPostTargetVC.isNavigationBarHidden = true
+//            navPostTargetVC.modalPresentationStyle = .fullScreen
+//            source.present(navPostTargetVC, animated: true, completion: nil)
+//        }
+//        if postOption.contains(.story) {
+//            
+//            imageOptions.append(ImageItemOption(title: AmityLocalizedStringSet.General.story.localizedString, image: AmityIconSet.CreatePost.iconStory) {
+//                storyCompletion(.story)
+//            })
+//        }
+//        AmityBottomSheet.present(options: imageOptions, from: source)
+//        #else
+//        AmityBottomSheet.present(options: imageOptions, from: source)
         #endif
     }
     
@@ -200,28 +200,28 @@ open class AmityEventHandler {
             return
         case .story:
             #if canImport(AmityUIKit4)
-            switch postTarget {
-            case .myFeed:
-                Log.add("Story in Feed!!!!")
-            case .community(object: let community):
-                Task { @MainActor in
-                    let createStoryPage = AmityCreateStoryPage(targetId: community.communityId, targetType: .community)
-                    let viewController = AmitySwiftUIHostingController(rootView: createStoryPage)
-                    
-                    if let vc = source.navigationController?.viewControllers.last, vc.isKind(of: AmityCommunityProfilePageViewController.self) {
-                        let navigationController = UINavigationController(rootViewController: viewController)
-                        navigationController.navigationBar.isHidden = true
-                        navigationController.modalPresentationStyle = .overFullScreen
-                        navigationController.modalTransitionStyle = .crossDissolve
-                        source.present(navigationController, animated: true, completion: nil)
-                    } else {
-                        source.navigationController?.navigationBar.isHidden = true
-                        source.navigationController?.modalPresentationStyle = .overFullScreen
-                        source.navigationController?.modalTransitionStyle = .crossDissolve
-                        source.navigationController?.pushViewController(viewController, animated: true)
-                    }
-                }
-            }
+//            switch postTarget {
+//            case .myFeed:
+//                Log.add("Story in Feed!!!!")
+//            case .community(object: let community):
+//                Task { @MainActor in
+//                    let createStoryPage = AmityCreateStoryPage(targetId: community.communityId, targetType: .community)
+//                    let viewController = AmitySwiftUIHostingController(rootView: createStoryPage)
+//                    
+//                    if let vc = source.navigationController?.viewControllers.last, vc.isKind(of: AmityCommunityProfilePageViewController.self) {
+//                        let navigationController = UINavigationController(rootViewController: viewController)
+//                        navigationController.navigationBar.isHidden = true
+//                        navigationController.modalPresentationStyle = .overFullScreen
+//                        navigationController.modalTransitionStyle = .crossDissolve
+//                        source.present(navigationController, animated: true, completion: nil)
+//                    } else {
+//                        source.navigationController?.navigationBar.isHidden = true
+//                        source.navigationController?.modalPresentationStyle = .overFullScreen
+//                        source.navigationController?.modalTransitionStyle = .crossDissolve
+//                        source.navigationController?.pushViewController(viewController, animated: true)
+//                    }
+//                }
+//            }
             #endif
             return
         }

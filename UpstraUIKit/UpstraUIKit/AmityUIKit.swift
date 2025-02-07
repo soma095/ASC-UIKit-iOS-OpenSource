@@ -201,7 +201,7 @@ final class AmityUIKitManagerInternal: NSObject {
                 await revokeDeviceTokens()
                 didUpdateClient()
                 #if canImport(AmityUIKit4)
-                AmityUIKit4Manager.didUpdateClient()
+              //  AmityUIKit4Manager.didUpdateClient()
                 #endif
                 completion?(true, nil)
             } catch let error {
@@ -221,7 +221,7 @@ final class AmityUIKitManagerInternal: NSObject {
         Task { @MainActor in
             do {
                 await revokeDeviceTokens()
-                
+                print(deviceToken, "token sent to server")
                 let success = try await client.registerPushNotification(withDeviceToken: deviceToken)
                 
                 if success, let currentUserId = _client?.currentUserId {

@@ -201,62 +201,62 @@ final class AmityCommunityProfileHeaderViewController: UIViewController {
     // TEMP: AmityUIKit v4 integration in Old UIKit for Story Target
     // Need to refactor when global feed come in
     #if canImport(AmityUIKit4)
-    var storyManager = StoryManager()
-    var storyTabComponent: AmityStoryTabComponent!
-    var storyCollection: AmityCollection<AmityStory>!
-    var cancellable: AnyCancellable?
-    var hasStoryManagePermission: Bool = false
+//    var storyManager = StoryManager()
+//    var storyTabComponent: AmityStoryTabComponent!
+//    var storyCollection: AmityCollection<AmityStory>!
+//    var cancellable: AnyCancellable?
+//    var hasStoryManagePermission: Bool = false
     #endif
    
     
     private func setupStory(community: AmityCommunity) {
         #if canImport(AmityUIKit4)
 
-        storyTabComponent = AmityStoryTabComponent(type: .communityFeed(community.communityId))
-        
-        let hostingController = AmitySwiftUIHostingController(rootView: storyTabComponent)
-    
-        addChild(hostingController)
-        hostingController.view.translatesAutoresizingMaskIntoConstraints = false
-        hostingController.view.frame = storyTabView.frame
-        storyTabView.addSubview(hostingController.view)
-        
-        NSLayoutConstraint.activate([
-            hostingController.view.leadingAnchor.constraint(equalTo: storyTabView.leadingAnchor),
-            hostingController.view.trailingAnchor.constraint(equalTo: storyTabView.trailingAnchor),
-            hostingController.view.topAnchor.constraint(equalTo: storyTabView.topAnchor, constant: 3.0),
-            hostingController.view.bottomAnchor.constraint(equalTo: storyTabView.bottomAnchor, constant: 3.0),
-                ])
-        hostingController.didMove(toParent: self)
+//        storyTabComponent = AmityStoryTabComponent(type: .communityFeed(community.communityId))
+//        
+//        let hostingController = AmitySwiftUIHostingController(rootView: storyTabComponent)
+//    
+//        addChild(hostingController)
+//        hostingController.view.translatesAutoresizingMaskIntoConstraints = false
+//        hostingController.view.frame = storyTabView.frame
+//        storyTabView.addSubview(hostingController.view)
+//        
+//        NSLayoutConstraint.activate([
+//            hostingController.view.leadingAnchor.constraint(equalTo: storyTabView.leadingAnchor),
+//            hostingController.view.trailingAnchor.constraint(equalTo: storyTabView.trailingAnchor),
+//            hostingController.view.topAnchor.constraint(equalTo: storyTabView.topAnchor, constant: 3.0),
+//            hostingController.view.bottomAnchor.constraint(equalTo: storyTabView.bottomAnchor, constant: 3.0),
+//                ])
+//        hostingController.didMove(toParent: self)
         
         #endif
     }
     
     func updateStoryViewController(community: AmityCommunityModel) {
         #if canImport(AmityUIKit4)
-        if storyTabView.subviews.isEmpty {
-            setupStory(community: community.object)
-        }
-        storyCollection = storyManager.getActiveStories(in: community.communityId)
-        
-        Task {
-            hasStoryManagePermission = await StoryPermissionChecker.checkUserHasManagePermission(communityId: community.communityId)
-            self.cancellable = nil
-            self.cancellable = self.storyCollection.$snapshots
-                .debounce(for: .milliseconds(200), scheduler: DispatchQueue.main)
-                .sink { [weak self] stories in
-                    Log.add("Story Count: \(stories.count)")
-                    
-                    if let hasPermission = self?.hasStoryManagePermission, hasPermission {
-                        self?.storyTabView.isHidden = false
-                    } else {
-                        self?.storyTabView.isHidden = stories.count == 0
-                    }
-                }
-        }
-        
-        #else
-        storyTabView.isHidden = true
+//        if storyTabView.subviews.isEmpty {
+//            setupStory(community: community.object)
+//        }
+//        storyCollection = storyManager.getActiveStories(in: community.communityId)
+//        
+//        Task {
+//            hasStoryManagePermission = await StoryPermissionChecker.checkUserHasManagePermission(communityId: community.communityId)
+//            self.cancellable = nil
+//            self.cancellable = self.storyCollection.$snapshots
+//                .debounce(for: .milliseconds(200), scheduler: DispatchQueue.main)
+//                .sink { [weak self] stories in
+//                    Log.add("Story Count: \(stories.count)")
+//                    
+//                    if let hasPermission = self?.hasStoryManagePermission, hasPermission {
+//                        self?.storyTabView.isHidden = false
+//                    } else {
+//                        self?.storyTabView.isHidden = stories.count == 0
+//                    }
+//                }
+//        }
+//        
+//        #else
+//        storyTabView.isHidden = true
         #endif
     }
     

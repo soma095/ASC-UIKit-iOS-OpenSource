@@ -31,9 +31,9 @@ public final class AmityCommunityProfilePageViewController: AmityProfileViewCont
     
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.navigationBar.isHidden = false
+        navigationController?.navigationBar.isHidden = true
         view.backgroundColor = AmityColorSet.backgroundColor
-        navigationController?.navigationBar.isHidden = false
+        navigationController?.navigationBar.isHidden = true
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
         appearance.backgroundColor = AmityColorSet.backgroundColor
