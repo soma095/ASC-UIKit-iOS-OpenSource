@@ -12,7 +12,7 @@ class AmityPostDetailDeletedTableViewCell: UITableViewCell, Nibbable {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+        backgroundColor = AmityColorSet.backgroundColor
         selectionStyle = .none
         imageView?.image = AmityIconSet.iconDeleteMessage
         textLabel?.font = AmityFontSet.body

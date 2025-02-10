@@ -44,6 +44,7 @@ import Photos
     public var doneButtonTitle = AmityLocalizedStringSet.General.done.localizedString
 
     // MARK: Internal properties
+    var showMaxMediaSelectedAlert: Bool = false
     var assetStore: AssetStore
     var onSelection: ((_ asset: PHAsset) -> Void)?
     var onDeselection: ((_ asset: PHAsset) -> Void)?
@@ -183,6 +184,9 @@ import Photos
     }
 
     func updatedDoneButton() {
+        if assetStore.count >= 10 {
+            showMaxSelectionAlert(in: self, media: assetStore.assets.first?.mediaType == .video ? "videos" : "photos")
+        }
         if settings.selection.max == 1 {
             // single selection
             doneButton.title = doneButtonTitle
@@ -196,4 +200,16 @@ import Photos
     func updateAlbumButton() {
         albumButton.isHidden = albums.count < 2
     }
+}
+
+func showMaxSelectionAlert(in viewController: UIViewController, media: String) {
+    let alert = UIAlertController(
+        title: "Selection Limit Reached",
+        message: "You can select a maximum of 10 \(media).",
+        preferredStyle: .alert
+    )
+
+    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+
+    viewController.present(alert, animated: true, completion: nil)
 }
