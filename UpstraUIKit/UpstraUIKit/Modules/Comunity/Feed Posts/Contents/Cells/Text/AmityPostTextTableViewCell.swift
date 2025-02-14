@@ -82,7 +82,7 @@ public final class AmityPostTextTableViewCell: UITableViewCell, Nibbable, AmityP
     
     // MARK: - Perform Action
     private func performAction(action: AmityPostAction) {
-        delegate?.didPerformAction(self, action: action)
+      //  delegate?.didPerformAction(self, action: action)
     }
 }
 
