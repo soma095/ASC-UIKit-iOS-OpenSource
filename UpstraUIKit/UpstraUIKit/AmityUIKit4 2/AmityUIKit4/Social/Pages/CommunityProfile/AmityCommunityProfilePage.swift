@@ -172,11 +172,11 @@ public struct AmityCommunityProfilePage: AmityPageView {
                 
             }
             
-            VStack {
-                topNavigationView
-                    .padding(.top, 44)
-                Spacer()
-            }
+//            VStack {
+//                topNavigationView
+//                    .padding(.top, 44)
+//                Spacer()
+//            }
             
             VStack {
                 Spacer()

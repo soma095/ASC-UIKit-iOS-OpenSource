@@ -8,10 +8,13 @@
 import Foundation
 import UIKit
 
-class AmityUIKitConfigController {
-    static let shared = AmityUIKitConfigController()
+public class AmityUIKitConfigController {
+   public static let shared = AmityUIKitConfigController()
     private(set) var config: [String: Any] = [:]
     private var excludedList: Set<String> = []
+   public var customTheme: AmityThemeStyle = .dark
+    public var primaryColor: UIColor = .black
+    public var secondaryColor: UIColor = .white
 
     private init() {
         configParser(configFile: "AmityUIKitConfig")
@@ -30,10 +33,9 @@ class AmityUIKitConfigController {
     }
     
     func getTheme(configId: String? = nil) -> AmityThemeColor {
-        let systemStyle = UIScreen.main.traitCollection.userInterfaceStyle
-        let configStyle = AmityThemeStyle(rawValue: config["preferred_theme"] as? String ?? "light") ?? .light
+        let configStyle = customTheme
         
-        let style: AmityThemeStyle = configStyle == .system ? (systemStyle == .light ? .light : .dark) : (configStyle == .light ? .light : .dark)
+        let style: AmityThemeStyle = configStyle == .light ? .light : .dark
         
         let fallbackTheme = style == .light ? lightTheme : darkTheme
         let globalTheme = getGlobalTheme(style) ?? fallbackTheme
@@ -107,8 +109,8 @@ class AmityUIKitConfigController {
     
     
     private func getThemeColor(theme: AmityTheme, fallbackTheme: AmityTheme) -> AmityThemeColor {
-        return AmityThemeColor(primaryColor: theme.primaryColor ?? fallbackTheme.primaryColor!,
-                               secondaryColor: theme.secondaryColor ?? fallbackTheme.secondaryColor!,
+        return AmityThemeColor(primaryColor: primaryColor ,
+                               secondaryColor: secondaryColor ,
                                baseColor: theme.baseColor ?? fallbackTheme.baseColor!,
                                baseColorShade1: theme.baseColorShade1 ?? fallbackTheme.baseColorShade1!,
                                baseColorShade2: theme.baseColorShade2 ?? fallbackTheme.baseColorShade2!,
@@ -144,9 +146,9 @@ class AmityUIKitConfigController {
     }
     
     public func getCurrentThemeStyle() -> AmityThemeStyle {
-        let configStyle = AmityThemeStyle(rawValue: config["preferred_theme"] as? String ?? "light") ?? .light
-        let systemStyle = UIScreen.main.traitCollection.userInterfaceStyle
-        let style: AmityThemeStyle = configStyle == .system ? (systemStyle == .light ? .light : .dark) : (configStyle == .light ? .light : .dark)
+        let configStyle = customTheme
+       // let systemStyle = UIScreen.main.traitCollection.userInterfaceStyle
+        let style: AmityThemeStyle = configStyle == .light ? .light : .dark
         return style
     }
 }

@@ -36,7 +36,7 @@ let darkTheme = AmityTheme(primaryColor: UIColor(hex: "#1054DE"),
                            highlightColor: UIColor(hex: "1054DE")
 )
 
-enum AmityThemeStyle: String {
+public enum AmityThemeStyle: String {
     case system = "default"
     case light = "light"
     case dark = "dark"
