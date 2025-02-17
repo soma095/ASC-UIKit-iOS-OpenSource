@@ -12,7 +12,7 @@ public class AmityUIKitConfigController {
    public static let shared = AmityUIKitConfigController()
     private(set) var config: [String: Any] = [:]
     private var excludedList: Set<String> = []
-   public var customTheme: AmityThemeStyle = .dark
+    public var customTheme: AmityThemeStyle = .dark
     public var primaryColor: UIColor = .black
     public var secondaryColor: UIColor = .white
 

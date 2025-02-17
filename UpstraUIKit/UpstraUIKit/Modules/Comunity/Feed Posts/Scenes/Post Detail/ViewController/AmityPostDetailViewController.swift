@@ -119,7 +119,7 @@ open class AmityPostDetailViewController: AmityViewController {
     
     private func setupNavigationBar() {
         optionButton = UIBarButtonItem(image: AmityIconSet.iconOption, style: .plain, target: self, action: #selector(optionTap))
-        optionButton.tintColor = .green
+        optionButton.tintColor = AmityColorSet.base
         navigationItem.rightBarButtonItem = optionButton
     }
     

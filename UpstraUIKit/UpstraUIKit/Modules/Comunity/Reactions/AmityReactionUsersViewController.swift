@@ -137,7 +137,7 @@ public final class AmityReactionUsersViewController: AmityViewController {
     
     private func showUserProfileScreen(for userId: String) {
         // Show profile view
-        AmityEventHandler.shared.userDidTap(from: self, userId: userId)
+       // AmityEventHandler.shared.userDidTap(from: self, userId: userId)
     }
 }
 
@@ -187,7 +187,7 @@ extension AmityReactionUsersViewController: UITableViewDataSource, UITableViewDe
             cell.avatarTapAction = { [weak self] in
                 guard let weakSelf = self else { return }
                 // Show profile view
-                weakSelf.showUserProfileScreen(for: reactionUser.userId)
+               // weakSelf.showUserProfileScreen(for: reactionUser.userId)
             }
             return cell
         }
@@ -198,7 +198,7 @@ extension AmityReactionUsersViewController: UITableViewDataSource, UITableViewDe
 
         // Show profile view
         let reactionUser = viewModel.reactionList[indexPath.row]
-        self.showUserProfileScreen(for: reactionUser.userId)
+     //   self.showUserProfileScreen(for: reactionUser.userId)
     }
     
     public func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
