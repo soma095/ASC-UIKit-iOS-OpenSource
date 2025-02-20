@@ -54,7 +54,7 @@ public struct AmityCommunityProfilePage: AmityPageView {
                                 let context = AmityCommunityProfilePageBehavior.Context(page: self)
                                 AmityUIKitManagerInternal.shared.behavior.communityProfilePageBehavior?.goToMemberListPage(context: context, community: viewModel.community)
                             })
-                            .offset(y: min(0, (viewModel.headerHeight - tabBarOffset)))
+                          
                             
                         }
                         // TabView
@@ -74,7 +74,7 @@ public struct AmityCommunityProfilePage: AmityPageView {
                             }
                             .onChange(of: geometry.frame(in: .global).origin.y) { newValue in
                                 tabBarOffset = geometry.frame(in: .global).origin.y
-                                if tabBarOffset > viewModel.headerHeight + 100 {
+                                if tabBarOffset > viewModel.headerHeight + 150 {
                                     isRefreshing = true
                                     Task {
                                         viewModel.refreshFeed(currentTab: currentTab)
@@ -86,7 +86,7 @@ public struct AmityCommunityProfilePage: AmityPageView {
                                 }
                             }
                         }
-                        .frame(height: 47)
+                        .frame(height: 30)
                         
                         
                         if isRefreshing {

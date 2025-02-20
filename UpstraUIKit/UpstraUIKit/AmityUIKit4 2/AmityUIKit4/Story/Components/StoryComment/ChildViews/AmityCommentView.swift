@@ -44,7 +44,7 @@ public struct AmityCommentView: View {
                 .clipShape(.circle)
                 .padding(EdgeInsets(top: 0, leading: 12, bottom: 0, trailing: 8))
                 .onTapGesture {
-                    commentButtonAction(.userProfile(comment.userId))
+                    //commentButtonAction(.userProfile(comment.userId))
                 }
                 .accessibilityIdentifier(AccessibilityID.AmityCommentTrayComponent.CommentBubble.avatarImageView)
             
