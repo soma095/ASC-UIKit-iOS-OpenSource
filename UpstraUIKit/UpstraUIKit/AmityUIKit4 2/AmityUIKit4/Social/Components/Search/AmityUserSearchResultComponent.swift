@@ -61,7 +61,7 @@ public struct AmityUserSearchResultComponent: AmityComponentView {
                         .padding(.top, index == 0 ? 8 : 0)
                         .onTapGesture {
                             let context = AmityUserSearchResultComponentBehavior.Context(component: self, user: user)
-                            AmityUIKitManagerInternal.shared.behavior.userSearchResultComponentBehavior?.goToUserProfilePage(context: context)
+                            //AmityUIKitManagerInternal.shared.behavior.userSearchResultComponentBehavior?.goToUserProfilePage(context: context)
                         }
                         .onAppear {
                             if index == viewModel.users.count - 1 {

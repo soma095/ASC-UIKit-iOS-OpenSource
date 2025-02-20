@@ -53,7 +53,7 @@ public struct AmityUserRelationshipPage: AmityPageView {
             .padding(.horizontal, 16)
             
             UserRelationshipTabView(type: .following, userId: userId, onTapAction: { user in
-                goToUserProfilePage(user.userId)
+               // goToUserProfilePage(user.userId)
             }, menuButtonAction: { user in
                 showBottomSheet.userId = user.userId
                 showBottomSheet.isShown.toggle()
@@ -61,7 +61,7 @@ public struct AmityUserRelationshipPage: AmityPageView {
             .isHidden(tabIndex != 0)
             
             UserRelationshipTabView(type: .follower, userId: userId, onTapAction: { user in
-                goToUserProfilePage(user.userId)
+              //  goToUserProfilePage(user.userId)
             }, menuButtonAction: { user in
                 showBottomSheet.userId = user.userId
                 showBottomSheet.isShown.toggle()

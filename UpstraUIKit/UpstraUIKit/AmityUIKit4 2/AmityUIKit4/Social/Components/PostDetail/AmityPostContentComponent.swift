@@ -92,6 +92,7 @@ public struct AmityPostContentComponent: AmityComponentView {
         }
         .background(Color(viewConfig.theme.backgroundColor))
         .updateTheme(with: viewConfig)
+        .hiddenNavigationBarStyle()
     }
     
     @ViewBuilder
@@ -120,7 +121,7 @@ public struct AmityPostContentComponent: AmityComponentView {
                     .clipShape(Circle())
                     .padding(EdgeInsets(top: 8, leading: 0, bottom: 8, trailing: 0))
                     .onTapGesture {
-                        goToUserProfilePage(post.postedUserId)
+                        //goToUserProfilePage(post.postedUserId)
                     }
                 
                 VStack(alignment: .leading, spacing: 3) {
@@ -295,7 +296,7 @@ public struct AmityPostContentComponent: AmityComponentView {
     private func postContentTextView() -> some View {
         if !post.text.isEmpty {
             ExpandableText(post.text, metadata: post.metadata, mentionees: post.mentionees, onTapMentionee: { userId in
-                goToUserProfilePage(userId)
+                //goToUserProfilePage(userId)
             })
             .lineLimit(8)
             .moreButtonText("...See more")
@@ -494,7 +495,7 @@ extension AmityPostContentComponent {
                 .applyTextStyle(.bodyBold(Color(viewConfig.theme.baseColor)))
                 .lineLimit(1)
                 .onTapGesture {
-                    self.goToUserProfilePage(post.postedUserId)
+                    //self.goToUserProfilePage(post.postedUserId)
                 }
             
             if post.isFromBrand {
@@ -552,8 +553,8 @@ extension AmityPostContentComponent {
     }
     
     private func goToUserProfilePage(_ userId: String) {
-        let context = AmityPostContentComponentBehavior.Context(component: self, userId: userId)
-        AmityUIKit4Manager.behaviour.postContentComponentBehavior?.goToUserProfilePage(context: context)
+//        let context = AmityPostContentComponentBehavior.Context(component: self, userId: userId)
+//        AmityUIKit4Manager.behaviour.postContentComponentBehavior?.goToUserProfilePage(context: context)
     }
 }
 
@@ -590,5 +591,23 @@ extension AmityPostContentComponent {
             self.hidePostTarget = shouldHideTarget
             self.hideMenuButton = shouldHideMenuButton
         }
+    }
+}
+
+struct HiddenNavigationBar: ViewModifier {
+    
+    func body(content: Content) -> some View {
+        content
+            .navigationBarHidden(true)
+            .navigationBarBackButtonHidden(true)
+            .navigationBarTitle("")
+            .navigationBarTitleDisplayMode(.inline)
+            .navigationViewStyle(.stack)
+    }
+}
+
+extension View {
+    func hiddenNavigationBarStyle() -> some View {
+        modifier(HiddenNavigationBar())
     }
 }

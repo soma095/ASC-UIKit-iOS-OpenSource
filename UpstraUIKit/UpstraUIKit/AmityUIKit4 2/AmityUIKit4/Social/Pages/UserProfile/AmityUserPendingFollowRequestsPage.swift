@@ -163,7 +163,7 @@ public struct AmityUserPendingFollowRequestsPage: AmityPageView {
         .padding(.top, 8)
         .contentShape(Rectangle())
         .onTapGesture {
-            goToUserProfilePage(user.userId)
+           // goToUserProfilePage(user.userId)
         }
         
         requestActionView(user)

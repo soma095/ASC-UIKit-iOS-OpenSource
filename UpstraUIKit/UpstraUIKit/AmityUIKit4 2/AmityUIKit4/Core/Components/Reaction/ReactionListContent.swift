@@ -33,7 +33,7 @@ struct ReactionListContent: View {
                                         /// iOS needs to dismiss presented view controller first before making navigation in underlying UINavigationController.
                                         host.controller?.navigationController?.presentedViewController?.dismiss(animated: false)
                                         host.controller?.navigationController?.presentedViewController?.dismiss(animated: false)
-                                        goToUserProfilePage(user.userId)
+                                      //  goToUserProfilePage(user.userId)
                                         return
                                     }
                                     

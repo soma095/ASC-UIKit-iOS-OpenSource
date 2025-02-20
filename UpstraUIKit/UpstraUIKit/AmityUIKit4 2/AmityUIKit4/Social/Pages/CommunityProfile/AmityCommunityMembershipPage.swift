@@ -47,7 +47,7 @@ public struct AmityCommunityMembershipPage: AmityPageView {
             
             TabView(selection: $tabIndex) {
                 CommunityMemberTabView(viewConfig: viewConfig, community: community, onTapAction: { member in
-                    goToUserProfilePage(member.userId)
+                  //  goToUserProfilePage(member.userId)
                 }, onMenuAction: { member in
                     viewModel.communityMember = member
                     viewModel.showBottomSheet.toggle()
@@ -55,7 +55,7 @@ public struct AmityCommunityMembershipPage: AmityPageView {
                 .tag(0)
                 
                 CommunityModeratorTabView(viewConfig: viewConfig, community: community, onTapAction: { member in
-                    goToUserProfilePage(member.userId)
+                   // goToUserProfilePage(member.userId)
                 }, onMenuAction: { member in
                     viewModel.communityMember = member
                     viewModel.showBottomSheet.toggle()
@@ -72,6 +72,7 @@ public struct AmityCommunityMembershipPage: AmityPageView {
         }
         .background(Color(viewConfig.theme.backgroundColor).ignoresSafeArea())
         .updateTheme(with: viewConfig)
+        .hiddenNavigationBarStyle() 
     }
     
     

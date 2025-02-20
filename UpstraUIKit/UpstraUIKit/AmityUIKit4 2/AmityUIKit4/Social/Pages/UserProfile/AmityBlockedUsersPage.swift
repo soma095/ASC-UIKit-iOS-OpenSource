@@ -92,7 +92,7 @@ public struct AmityBlockedUsersPage: AmityPageView {
                         })
                         .padding([.leading, .trailing], 16)
                         .onTapGesture {
-                            goToUserProfilePage(user.userId)
+                          //  goToUserProfilePage(user.userId)
                         }
                         .onAppear {
                             if index == viewModel.blockedUsers.count - 1 {

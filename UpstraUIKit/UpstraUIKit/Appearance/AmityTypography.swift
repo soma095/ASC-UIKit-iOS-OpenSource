@@ -42,7 +42,7 @@ public class AmityFontSet {
     
     static private(set) var currentTypography: AmityTypography = AmityTypography()
     
-    static func set(typography: AmityTypography) {
+    public static func set(typography: AmityTypography) {
         currentTypography = typography
     }
     

@@ -39,6 +39,7 @@ public struct AmityPendingPostsPage: AmityPageView {
             }
         }
         .background(Color(viewConfig.theme.backgroundColor).ignoresSafeArea())
+        .hiddenNavigationBarStyle() 
     }
     
     

@@ -60,7 +60,7 @@ public struct AmityPendingPostContentComponent: AmityComponentView {
                 .clipShape(Circle())
                 .padding(EdgeInsets(top: 8, leading: 0, bottom: 8, trailing: 0))
                 .onTapGesture {
-                    goToUserProfilePage(post.postedUserId)
+                    //goToUserProfilePage(post.postedUserId)
                 }
             
             VStack(alignment: .leading, spacing: 3) {
@@ -69,7 +69,7 @@ public struct AmityPendingPostContentComponent: AmityComponentView {
                         .applyTextStyle(.bodyBold(Color(viewConfig.theme.baseColor)))
                         .lineLimit(1)
                         .onTapGesture {
-                            goToUserProfilePage(post.postedUserId)
+                            //goToUserProfilePage(post.postedUserId)
                         }
                 }
                 
@@ -152,7 +152,7 @@ public struct AmityPendingPostContentComponent: AmityComponentView {
     private func postContentTextView() -> some View {
         if !post.text.isEmpty {
             ExpandableText(post.text, metadata: post.metadata, mentionees: post.mentionees, onTapMentionee: { userId in
-                goToUserProfilePage(userId)
+                //goToUserProfilePage(userId)
             })
             .lineLimit(8)
             .moreButtonText("...See more")

@@ -184,6 +184,7 @@ public struct AmityCommunitySettingPage: AmityPageView {
         .padding([.leading, .trailing], 16)
         .background(Color(viewConfig.theme.backgroundColor).ignoresSafeArea())
         .updateTheme(with: viewConfig)
+        .hiddenNavigationBarStyle() 
     }
     
     private var navigationBarView: some View {
