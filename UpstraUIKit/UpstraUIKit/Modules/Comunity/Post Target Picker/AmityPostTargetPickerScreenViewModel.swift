@@ -33,11 +33,13 @@ class AmityPostTargetPickerScreenViewModel: AmityPostTargetPickerScreenViewModel
                     dispatchGroup.enter()
                     
                     if item.onlyAdminCanPost {
-                        AmityUIKitManager.client.hasPermission(.createPrivilegedPost, forCommunity: item.communityId) { success in
-                            if success {
-                                self?.communities.append(item)
+                        if let client = AmityUIKitManager.client {
+                            client.hasPermission(.createPrivilegedPost, forCommunity: item.communityId) { success in
+                                if success {
+                                    self?.communities.append(item)
+                                }
+                                dispatchGroup.leave()
                             }
-                            dispatchGroup.leave()
                         }
                     } else {
                         self?.communities.append(item)

@@ -359,13 +359,15 @@ private extension AmityCommunityProfileHeaderViewController {
     }
     
     @objc func chatTap() {
-        guard let rootViewController = rootViewController else { return }
-        let channelRepository = AmityChannelRepository(client: AmityUIKitManager.client)
-        channelToken = channelRepository.getChannel(screenViewModel.dataSource.community?.channelId ?? "").observeOnce { channel, error in
-            if let channel = channel.object {
-                AmityEventHandler.shared.communityChannelDidTap(from: rootViewController, channelId: channel.channelId, subChannelId: channel.defaultSubChannelId)
+        if let client = AmityUIKitManager.client {
+            guard let rootViewController = rootViewController else { return }
+            let channelRepository = AmityChannelRepository(client: client)
+            channelToken = channelRepository.getChannel(screenViewModel.dataSource.community?.channelId ?? "").observeOnce { channel, error in
+                if let channel = channel.object {
+                    AmityEventHandler.shared.communityChannelDidTap(from: rootViewController, channelId: channel.channelId, subChannelId: channel.defaultSubChannelId)
+                }
+                self.channelToken?.invalidate()
             }
-            self.channelToken?.invalidate()
         }
     }
     

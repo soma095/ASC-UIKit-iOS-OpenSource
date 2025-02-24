@@ -48,18 +48,19 @@ extension UIViewController {
     }
     
     func presentVideoPlayer(at url: URL) {
-        let headers = [
-            "Authorization": "Bearer \(AmityUIKitManager.client.accessToken ?? "")"
-        ]
-        
-        let asset = AVURLAsset(url: url, options: ["AVURLAssetHTTPHeaderFieldsKey": headers])
-        let playerItem = AVPlayerItem(asset: asset)
-        let player = AVPlayer(playerItem: playerItem)
-        
-        let playerViewController = AVPlayerViewController()
-        playerViewController.player = player
-        present(playerViewController, animated: true) { [weak player] in
-            player?.play()
+        if let client = AmityUIKitManager.client {
+            let headers = [
+                "Authorization": "Bearer \(client.accessToken ?? "")"
+            ]
+            let asset = AVURLAsset(url: url, options: ["AVURLAssetHTTPHeaderFieldsKey": headers])
+            let playerItem = AVPlayerItem(asset: asset)
+            let player = AVPlayer(playerItem: playerItem)
+            
+            let playerViewController = AVPlayerViewController()
+            playerViewController.player = player
+            present(playerViewController, animated: true) { [weak player] in
+                player?.play()
+            }
         }
     }
 }

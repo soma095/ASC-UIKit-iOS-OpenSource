@@ -119,14 +119,16 @@ public class MentionListProvider {
     }
     
     private func setupCommunity(withId communityId: String) {
-        communityMembersRepo = AmityCommunityMembership(client: AmityUIKitManager.client, andCommunityId: communityId)
-        communityToken = communityRepository.getCommunity(withId: communityId).observe { [weak self] liveObject, error in
-            if liveObject.dataStatus == .fresh {
-                self?.communityToken?.invalidate()
+        if let client = AmityUIKitManager.client {
+            communityMembersRepo = AmityCommunityMembership(client: client, andCommunityId: communityId)
+            communityToken = communityRepository.getCommunity(withId: communityId).observe { [weak self] liveObject, error in
+                if liveObject.dataStatus == .fresh {
+                    self?.communityToken?.invalidate()
+                }
+                
+                guard let community = liveObject.snapshot else { return }
+                self?.community = AmityCommunityModel(object: community)
             }
-            
-            guard let community = liveObject.snapshot else { return }
-            self?.community = AmityCommunityModel(object: community)
         }
     }
     

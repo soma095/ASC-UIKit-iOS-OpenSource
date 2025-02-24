@@ -115,8 +115,15 @@ public final class AmityUIKitManager {
     // MARK: - Variable
     
     /// Public instance of `AmityClient` from `AmitySDK`. If you are using both`AmitySDK` & `AmityUIKit` in a same project, we recommend to have only one instance of `AmityClient`. You can use this instance instead.
-    public static var client: AmityClient {
-        return AmityUIKitManagerInternal.shared.client
+    public static var client: AmityClient? {
+        return AmityUIKitManagerInternal.shared.newClient
+    }
+    
+    public static func isClientInitialized() -> Bool {
+        if let client = AmityUIKitManagerInternal.shared.newClient {
+            return true
+        }
+        return false
     }
     
     public static var feedUISettings: AmityFeedUISettings {
@@ -166,6 +173,10 @@ final class AmityUIKitManagerInternal: NSObject {
             fatalError("Something went wrong. Please ensure `AmityUIKitManager.setup(:_)` get called before accessing client.")
         }
         return client
+    }
+    
+    var newClient: AmityClient? {
+        return _client
     }
     
     var env: [String: Any] = [:]

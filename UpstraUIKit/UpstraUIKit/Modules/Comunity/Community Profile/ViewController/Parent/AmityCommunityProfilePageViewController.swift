@@ -156,8 +156,10 @@ extension AmityCommunityProfilePageViewController: AmityCommunityProfileScreenVi
     func screenViewModelDidGetCommunity(with community: AmityCommunityModel) {
         
         if community.object.onlyAdminCanPost {
-            AmityUIKitManager.client.hasPermission(.createPrivilegedPost, forCommunity: screenViewModel.communityId) { [weak self] success in
-                self?.postButton.isHidden = !(success && community.isJoined)
+            if let client = AmityUIKitManager.client {
+                client.hasPermission(.createPrivilegedPost, forCommunity: screenViewModel.communityId) { [weak self] success in
+                    self?.postButton.isHidden = !(success && community.isJoined)
+                }
             }
         } else {
             postButton.isHidden = !community.isJoined
