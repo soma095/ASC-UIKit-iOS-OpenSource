@@ -51,6 +51,7 @@ final class AmityCommunityProfileHeaderViewController: UIViewController {
     private let gradient = CAGradientLayer()
     private var channelToken: AmityNotificationToken?
     var isUpdateInProgress = false
+    private var hasAppliedDescriptionPadding = false
     
     // MARK: - Callback
     var didUpdatePostBanner: (() -> Void)?
@@ -73,6 +74,30 @@ final class AmityCommunityProfileHeaderViewController: UIViewController {
         setupDescription()
         setupActionButton()
         setupPendingPosts()
+        
+        // Hide the post and member count strip
+        hidePostAndMemberStrip()
+    }
+    
+    private func hidePostAndMemberStrip() {
+        // Hide the post and member views
+        postView.isHidden = true
+        memberView.isHidden = true
+        postLabel.isHidden = true
+        memberLabel.isHidden = true
+        separatorView.isHidden = true
+        
+        // Optionally, set their heights to 0 to prevent layout spacing
+        postView.constraints.forEach { constraint in
+            if constraint.firstAttribute == .height {
+                constraint.constant = 0
+            }
+        }
+        memberView.constraints.forEach { constraint in
+            if constraint.firstAttribute == .height {
+                constraint.constant = 0
+            }
+        }
     }
     
     static func make(rootViewController: AmityCommunityProfilePageViewController?, viewModel: AmityCommunityProfileScreenViewModelType) -> AmityCommunityProfileHeaderViewController {
@@ -103,11 +128,6 @@ final class AmityCommunityProfileHeaderViewController: UIViewController {
         displayNameLabel.accessibilityTraits = .staticText
         
         separatorView.backgroundColor = AmityColorSet.base.blend(.shade3)
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        gradient.frame = avatarView.frame
     }
     
     private func setupBadgeView() {
@@ -172,6 +192,46 @@ final class AmityCommunityProfileHeaderViewController: UIViewController {
         descriptionLabel.font = AmityFontSet.body
         descriptionLabel.textColor = AmityColorSet.base
         descriptionLabel.numberOfLines = 0
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        gradient.frame = avatarView.frame
+        
+        // Apply top padding to description container view
+        applyDescriptionPadding()
+    }
+    
+    private func applyDescriptionPadding() {
+        // Only apply once
+        guard !hasAppliedDescriptionPadding else { return }
+        
+        // Check if we need to find and modify the constraint
+        for constraint in descriptionContainerView.superview?.constraints ?? [] {
+            // Look for top constraint of description container
+            if constraint.firstItem as? UIView == descriptionContainerView && 
+               constraint.firstAttribute == .top {
+                // Increase the constant to add padding
+                constraint.constant += 16
+                hasAppliedDescriptionPadding = true
+                return
+            } else if constraint.secondItem as? UIView == descriptionContainerView && 
+                      constraint.secondAttribute == .top {
+                // If it's the second item, we might need to adjust differently
+                constraint.constant += 16
+                hasAppliedDescriptionPadding = true
+                return
+            }
+        }
+        
+        // Alternative: check constraints on the descriptionContainerView itself
+        for constraint in descriptionContainerView.constraints {
+            if constraint.firstAttribute == .top {
+                constraint.constant += 16
+                hasAppliedDescriptionPadding = true
+                return
+            }
+        }
     }
     
     private func setupActionButton() {
