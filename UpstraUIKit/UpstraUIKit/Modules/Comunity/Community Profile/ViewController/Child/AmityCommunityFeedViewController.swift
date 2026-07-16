@@ -29,13 +29,16 @@ final public class AmityCommunityFeedViewController: AmityProfileBottomViewContr
         timelineVC?.handleRefreshing()
     }
     
-    public static func make(communityId: String) -> AmityCommunityFeedViewController {
+    public static func make(communityId: String, feedHeader: FeedHeaderPresentable? = nil) -> AmityCommunityFeedViewController {
         let vc = AmityCommunityFeedViewController()
         vc.communityId = communityId
         // Timeline
         vc.timelineVC = AmityFeedViewController.make(feedType: .communityFeed(communityId: communityId))
         vc.timelineVC?.pageTitle = AmityLocalizedStringSet.timelineTitle.localizedString
         vc.timelineVC?.pageIndex = 0
+        // Portal App Banners: optional scroll-with-page header — renders as the feed's
+        // first (section-0) row so it scrolls together with the posts.
+        vc.timelineVC?.headerView = feedHeader
         // Gallery
         vc.galleryVC = AmityPostGalleryViewController.make(
             targetType: .community,
