@@ -28,7 +28,14 @@ final public class AmityCommunityFeedViewController: AmityProfileBottomViewContr
     func handleRefreshFeed()  {
         timelineVC?.handleRefreshing()
     }
-    
+
+    /// Portal App Banners: update the scroll-with-page header AFTER the feed VC already exists
+    /// (e.g. the banner arrived after registration). Setting `headerView` reloads the feed so the
+    /// banner row appears/updates.
+    public func updateFeedHeader(_ feedHeader: FeedHeaderPresentable?) {
+        timelineVC?.headerView = feedHeader
+    }
+
     public static func make(communityId: String, feedHeader: FeedHeaderPresentable? = nil) -> AmityCommunityFeedViewController {
         let vc = AmityCommunityFeedViewController()
         vc.communityId = communityId

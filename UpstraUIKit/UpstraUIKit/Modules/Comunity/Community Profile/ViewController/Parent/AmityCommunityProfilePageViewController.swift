@@ -68,6 +68,12 @@ public final class AmityCommunityProfilePageViewController: AmityProfileViewCont
 
     }
     
+    /// Portal App Banners: update the feed's scroll-with-page header after this page already exists
+    /// (the wrapper calls this from updateUIViewController so a later-arriving banner still shows).
+    public func updateFeedHeader(_ feedHeader: FeedHeaderPresentable?) {
+        bottom?.updateFeedHeader(feedHeader)
+    }
+
     override func headerViewController() -> UIViewController {
         return header
     }
