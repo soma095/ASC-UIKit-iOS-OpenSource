@@ -50,9 +50,10 @@ public final class AmityCommunityProfilePageViewController: AmityProfileViewCont
     }
     
     public static func make(
-        withCommunityId communityId: String
+        withCommunityId communityId: String,
+        feedHeader: FeedHeaderPresentable? = nil
     ) -> AmityCommunityProfilePageViewController {
-        
+
         let communityRepositoryManager = AmityCommunityRepositoryManager(communityId: communityId)
         let viewModel = AmityCommunityProfileScreenViewModel(
             communityId: communityId,
@@ -61,11 +62,18 @@ public final class AmityCommunityProfilePageViewController: AmityProfileViewCont
         let vc = AmityCommunityProfilePageViewController()
         vc.screenViewModel = viewModel
         vc.header = AmityCommunityProfileHeaderViewController.make(rootViewController: vc, viewModel: viewModel)
-        vc.bottom = AmityCommunityFeedViewController.make(communityId: communityId)
+        // Portal App Banners: forward the optional scroll-with-page header into the feed.
+        vc.bottom = AmityCommunityFeedViewController.make(communityId: communityId, feedHeader: feedHeader)
         return vc
-        
+
     }
     
+    /// Portal App Banners: update the feed's scroll-with-page header after this page already exists
+    /// (the wrapper calls this from updateUIViewController so a later-arriving banner still shows).
+    public func updateFeedHeader(_ feedHeader: FeedHeaderPresentable?) {
+        bottom?.updateFeedHeader(feedHeader)
+    }
+
     override func headerViewController() -> UIViewController {
         return header
     }
