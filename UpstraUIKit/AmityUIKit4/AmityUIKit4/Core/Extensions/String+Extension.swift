@@ -43,6 +43,13 @@ extension String {
 
 // MARK: - HTML-authored text
 
+/// Tags the Setup rich-text editor (draftjs-to-html) emits, plus the hand-pasted ones seen in
+/// production. Unknown tags are excluded on purpose: a description reading "the fourth edition of
+/// <break>point is here" is prose, not markup, and must render exactly as the organizer typed it.
+private let amityKnownHTMLTags =
+    "a|b|blockquote|br|code|del|div|em|h[1-6]|hr|i|img|ins|li|mark|ol|p|pre|s|script|small|"
+    + "span|strike|strong|style|sub|sup|table|tbody|td|th|thead|tr|u|ul"
+
 /// `&amp;` must be decoded last, so `&amp;lt;` becomes the literal text `&lt;` and not `<`.
 private let amityNamedHTMLEntities: [(entity: String, replacement: String)] = [
     ("&nbsp;", "\u{00A0}"),
@@ -64,21 +71,34 @@ extension String {
 
     /// Zuddl authors community descriptions as rich text, so Amity can hand back raw HTML.
     var looksLikeHTML: Bool {
-        return range(of: "<\\s*/?\\s*[a-zA-Z][^<>]*>", options: .regularExpression) != nil
+        return range(of: "(?i)<\\s*/?\\s*(?:\(amityKnownHTMLTags))(?:\\s[^<>]*)?/?\\s*>", options: .regularExpression) != nil
             || range(of: "&(#[0-9]+|#[xX][0-9a-fA-F]+|[a-zA-Z][a-zA-Z0-9]{1,31});", options: .regularExpression) != nil
     }
 
-    /// Non-HTML input is returned untouched so a user-typed `<` or `&` is never mangled.
+    /// Non-HTML input is returned untouched so a typed `<` or `&` is never mangled.
     /// Avoids `NSAttributedString(documentType: .html)`, which is main-thread-only and slow.
     func htmlToPlainText() -> String {
         guard looksLikeHTML else {
             return trimmingCharacters(in: .whitespacesAndNewlines)
         }
 
+        // Script and style bodies are markup, not prose, so they must not survive tag stripping.
         var text = replacingOccurrences(
-            of: "<\\s*br\\s*/?\\s*>|<\\s*/\\s*(p|div|li|tr|h[1-6]|blockquote)\\s*>",
+            of: "(?is)<\\s*(script|style)\\b[^<>]*>.*?<\\s*/\\s*\\1\\s*>",
+            with: "",
+            options: .regularExpression
+        )
+        // The editor pretty-prints blocks onto their own lines; that whitespace is not content.
+        text = text.replacingOccurrences(of: ">\\s+<", with: "><", options: .regularExpression)
+        text = text.replacingOccurrences(
+            of: "(?i)<\\s*(?:br|hr)\\s*/?\\s*>|<\\s*/\\s*(?:p|div|li|ul|ol|tr|pre|blockquote|h[1-6])\\s*>",
             with: "\n",
-            options: [.regularExpression, .caseInsensitive]
+            options: .regularExpression
+        )
+        text = text.replacingOccurrences(
+            of: "(?i)<\\s*/\\s*(?:td|th)\\s*>",
+            with: " ",
+            options: .regularExpression
         )
         text = text.replacingOccurrences(of: "<[^<>]+>", with: "", options: .regularExpression)
         text = text.decodingHTMLEntities()
