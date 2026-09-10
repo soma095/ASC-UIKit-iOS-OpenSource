@@ -269,8 +269,9 @@ final class AmityCommunityProfileHeaderViewController: UIViewController {
                             size: .large,
                             placeholder: AmityIconSet.defaultCommunity)
         displayNameLabel.text = community.displayName
-        descriptionLabel.text = community.description
-        descriptionLabel.isHidden = community.description == ""
+        let description = community.description.htmlToPlainText()
+        descriptionLabel.text = description
+        descriptionLabel.isHidden = description.isEmpty
         updateMemberLabel(memberCount: Int(community.membersCount))
         categoryLabel.text = community.category
         privateBadgeImageView.isHidden = community.isPublic

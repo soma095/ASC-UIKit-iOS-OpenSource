@@ -80,10 +80,11 @@ public struct AmityCommunityHeaderComponent: AmityComponentView {
                 .isHidden(community.categories.isEmpty || viewConfig.isHidden(elementId: .communityCategory))
                 .accessibilityIdentifier(AccessibilityID.Social.CommunityHeader.communityCategory)
             
-            Text(community.description)
+            let communityDescription = community.description.htmlToPlainText()
+            Text(communityDescription)
                 .applyTextStyle(.body(Color(viewConfig.theme.baseColor)))
                 .lineLimit(4)
-                .isHidden(community.description.isEmpty || viewConfig.isHidden(elementId: .communityDescription))
+                .isHidden(communityDescription.isEmpty || viewConfig.isHidden(elementId: .communityDescription))
                 .padding(.all, 16)
                 .accessibilityIdentifier(AccessibilityID.Social.CommunityHeader.communityDescription)
             
